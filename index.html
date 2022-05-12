@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="style/index.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body class="page">
+  <header class="header content">
+    <img class="header__logo" src="images/logo.svg">
+  </header>
+
+  <main class="content">
+
+
+    <section class="kusto">
+      <div class="kusto__container">
+        <img class="kusto__photo" src="images/kusto__photo.jpg">
+        <div>
+          <div class="kusto__text-box">
+            <h1 class="kusto__title">Жак-Ив Кусто</h1>
+            <img class="kusto__edit" src="images/Edit Button.svg">
+          </div>
+          <p class="kusto__subtitle">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="kusto__button-add"><img class="kusto__add" src="images/kusto_add.png"></button>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <img class="card__image" src="images/karachevsk.jpg">
+        <div class="card__link">
+          <h2 class="card__title">Карачаевск</h2>
+          <img class="card__like" src="images/like.svg">
+          <img class="card__like card__like_active" src="images/like__activ.png">
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="images/elbrus.png">
+        <div class="card__link">
+          <h2 class="card__title">Гора Эльбрус</h2>
+          <img class="card__like" src="images/like.svg">
+          <img class="card__like card__like_active" src="images/like__activ.png">
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="images/dombay.png">
+        <div class="card__link">
+          <h2 class="card__title">Домбай</h2>
+          <img class="card__like" src="images/like.svg">
+          <img class="card__like card__like_active" src="images/like__activ.png">
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="images/karachevsk.jpg">
+        <div class="card__link">
+          <h2 class="card__title">Карачаевск</h2>
+          <img class="card__like" src="images/like.svg">
+          <img class="card__like card__like_active" src="images/like__activ.png">
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="images/elbrus.png">
+        <div class="card__link">
+          <h2 class="card__title">Гора Эльбрус</h2>
+          <img class="card__like" src="images/like.svg">
+          <img class="card__like card__like_active" src="images/like__activ.png">
+        </div>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="images/dombay.png">
+        <div class="card__link">
+          <h2 class="card__title">Домбай</h2>
+          <img class="card__like" src="images/like.svg">
+          <img class="card__like card__like_active" src="images/like__activ.png">
+        </div>
+      </article>
+
+      </section>
+  </main>
+
+  <footer class="footer content">
+    <p class="footer__text">© 2020 Mesto Russia</p>
+  </footer>
+
+
+  <section class="popup">
+    <img class="popup__close-icon" alt="Иконка закрыть" src="images/Close Icon.png">
+    <div class="popup__container">
+      <div class="popup__content">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <div class="popup__form">
+          <input type="text" name="username" value="Жак-Ив Кусто" placeholder="" class="popup__input">Жак-Ив Кусто</input>
+          <input type="text" name="aboutme" value="Исследователь океана" placeholder="" class="popup__input">Исследователь океана</input>
+        </div>
+        <button class="popup__button">Сохранить</button>
+      </div>
+    </div>
+  </section>
+
+
+ <!-- <section class="popup">
+    <div class="form">
+      <img class="form__close-icon" src="images/Close Icon.png">
+      <div class="form__content">
+        <h3 class="form__title">Редактировать профиль</h3>
+        <div class="form__text-container">
+          <input type="text" name="" value="" placeholder="Имя" class="form__input">Жак-Ив Кусто</input>
+          <input type="text" placeholder="О себе" class="form__input">Исследователь океана</input>
+        </div>
+        <button class="form__button">Сохранить</button>
+      </div>
+    </div> бекграунд нон 
+  </section>-->
+
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

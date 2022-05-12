@@ -1,0 +1,9 @@
+.kusto__container {
+  display: flex;
+}
+
+@media screen and (max-width: 950px) {
+  .kusto__container {
+  flex-direction: column;
+  }
+}
