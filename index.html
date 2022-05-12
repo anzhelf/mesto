@@ -34,7 +34,7 @@
     <section class="cards">
       <article class="card">
         <img class="card__image" src="images/karachevsk.jpg">
-        <div class="card__link">
+        <div class="card__post">
           <h2 class="card__title">Карачаевск</h2>
           <img class="card__like" src="images/like.svg">
           <img class="card__like card__like_active" src="images/like__activ.png">
@@ -43,7 +43,7 @@
 
       <article class="card">
         <img class="card__image" src="images/elbrus.png">
-        <div class="card__link">
+        <div class="card__post">
           <h2 class="card__title">Гора Эльбрус</h2>
           <img class="card__like" src="images/like.svg">
           <img class="card__like card__like_active" src="images/like__activ.png">
@@ -52,7 +52,7 @@
 
       <article class="card">
         <img class="card__image" src="images/dombay.png">
-        <div class="card__link">
+        <div class="card__post">
           <h2 class="card__title">Домбай</h2>
           <img class="card__like" src="images/like.svg">
           <img class="card__like card__like_active" src="images/like__activ.png">
@@ -61,7 +61,7 @@
 
       <article class="card">
         <img class="card__image" src="images/karachevsk.jpg">
-        <div class="card__link">
+        <div class="card__post">
           <h2 class="card__title">Карачаевск</h2>
           <img class="card__like" src="images/like.svg">
           <img class="card__like card__like_active" src="images/like__activ.png">
@@ -70,7 +70,7 @@
 
       <article class="card">
         <img class="card__image" src="images/elbrus.png">
-        <div class="card__link">
+        <div class="card__post">
           <h2 class="card__title">Гора Эльбрус</h2>
           <img class="card__like" src="images/like.svg">
           <img class="card__like card__like_active" src="images/like__activ.png">
@@ -79,8 +79,8 @@
 
       <article class="card">
         <img class="card__image" src="images/dombay.png">
-        <div class="card__link">
-          <h2 class="card__title">Домбай</h2>
+        <div class="card__post">
+          <div class="card__text-content"><h2 class="card__title">Домбай</h2></div>
           <img class="card__like" src="images/like.svg">
           <img class="card__like card__like_active" src="images/like__activ.png">
         </div>
@@ -94,35 +94,20 @@
   </footer>
 
 
-  <section class="popup">
+  <section class="popup popup_opened">
     <img class="popup__close-icon" alt="Иконка закрыть" src="images/Close Icon.png">
     <div class="popup__container">
       <div class="popup__content">
         <h3 class="popup__title">Редактировать профиль</h3>
         <div class="popup__form">
-          <input type="text" name="username" value="Жак-Ив Кусто" placeholder="" class="popup__input">Жак-Ив Кусто</input>
-          <input type="text" name="aboutme" value="Исследователь океана" placeholder="" class="popup__input">Исследователь океана</input>
+          <input type="text" name="username" value="Жак-Ив Кусто" placeholder="Имя" class="popup__input popup__input_type_name">
+          <input type="text" name="job" value="Исследователь океана" placeholder="Работа" class="popup__input popup__input_type_job">
         </div>
         <button class="popup__button">Сохранить</button>
       </div>
     </div>
   </section>
 
-
- <!-- <section class="popup">
-    <div class="form">
-      <img class="form__close-icon" src="images/Close Icon.png">
-      <div class="form__content">
-        <h3 class="form__title">Редактировать профиль</h3>
-        <div class="form__text-container">
-          <input type="text" name="" value="" placeholder="Имя" class="form__input">Жак-Ив Кусто</input>
-          <input type="text" placeholder="О себе" class="form__input">Исследователь океана</input>
-        </div>
-        <button class="form__button">Сохранить</button>
-      </div>
-    </div> бекграунд нон 
-  </section>-->
-
-  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>

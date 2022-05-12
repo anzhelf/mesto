@@ -1,4 +1,8 @@
 .card__like_active {
   display: none;
-  }
-  
+}
+
+.card__like_active:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

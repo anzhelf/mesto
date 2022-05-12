@@ -1,7 +1,6 @@
 .kusto__text-box {
-display: flex;
-margin: 22px 18px 16px 30px;
-
+  display: flex;
+  margin: 22px 18px 16px 30px;
 }
 
 @media screen and (max-width: 950px) {

@@ -8,6 +8,7 @@
 
 .kusto__button-add:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 950px) {
