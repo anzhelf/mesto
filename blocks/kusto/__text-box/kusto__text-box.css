@@ -1,10 +1,15 @@
 .kusto__text-box {
-  display: flex;
-  margin: 22px 18px 16px 30px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  align-items:flex-end;
+  justify-content: flex-start;
+  grid-gap: 16px 18px;
 }
 
 @media screen and (max-width: 950px) {
   .kusto__text-box {
-    margin: 22px 0 14px 35px;
+    margin: 22px 0 14px 36px;
+    grid-gap: 10px;
   }
 }
