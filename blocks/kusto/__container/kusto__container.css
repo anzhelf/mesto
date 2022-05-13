@@ -1,14 +1,14 @@
 .kusto__container {
   display: grid;
   grid-template-columns: 120px minmax(350px, 549px) 150px;
-  grid-column-gap: 30px ;
+  grid-column-gap: 30px;
   align-items: center;
   justify-content: flex-start;
 }
 
 @media screen and (max-width: 950px) {
   .kusto__container {
-    grid-template-columns: repeat(1,auto);
+    grid-template-columns: repeat(1, auto);
     grid-template-rows: repeat(3, auto);
   }
 }

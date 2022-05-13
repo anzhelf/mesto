@@ -12,3 +12,9 @@
 .popup__input:last-child {
   margin: 0;
 }
+
+@media screen and (max-width: 950px) {
+  .popup__input {
+    width: 235px;
+  }
+}
