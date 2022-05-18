@@ -6,6 +6,10 @@
   top: -40px;
   opacity: 1;
   transition: opacity 0.2s linear 0.1s;
+  background: none;
+  background-image: url(../../../images/Close_Icon.png);
+  border: none;
+  padding: 0;
 }
 .popup__close-icon:hover {
   opacity: 0.5;

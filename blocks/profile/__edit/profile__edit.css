@@ -4,6 +4,13 @@
   margin-bottom: 8px;
   opacity: 1;
   transition: opacity 0.2s linear 0.1s;
+  background: none;
+  background-repeat: no-repeat;
+  background-position: 6px 5px;
+  background-size: 10px 10px;
+  background-image: url(../../../images/edit__button.png);
+  border: 1px solid #fff;
+  padding: 0;
 }
 
 .profile__edit:hover {

@@ -18,10 +18,10 @@
       <img class="profile__photo" src="images/kusto__photo.jpg" alt="Фото профиля, путишественник Кусто в красной шапке">
       <div class="profile__text-box">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <img class="profile__edit" src="images/Edit_Button.svg" alt="Кнопка редактировать информацию о себе">
+        <button class="profile__edit"></button>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <button class="profile__button-add"><img class="profile__add" src="images/kusto_add.png" alt="Кнопка дбавить пост"></button>
+      <button class="profile__button-add"></button>
     </section>
 
     <section class="cards" aria-label="Блок с карточками мест">
@@ -29,10 +29,7 @@
         <img class="card__image" src="images/kareliya.jpg" alt="Резкий склон скалы">
         <div class="card__post">
           <h2 class="card__title">Карелия</h2>
-          <div class="card__like"></div> 
-         <!-- <img class="card__like" src="images/like.svg" alt="Значек - сердечко">
-          <img class="card__like card__like_active" src="images/like__activ.png" alt="Значек - сердечко активный">
-         -->
+          <button class="card__like"></button>
         </div>
       </article>
 
@@ -40,17 +37,14 @@
         <img class="card__image" src="images/big-bermamit.jpg" alt="Песчаные горы днем">
         <div class="card__post">
           <h2 class="card__title">Большой бермамыт</h2>
-          <img class="card__like" src="images/like.svg" alt="Значек - сердечко">
-          <img class="card__like card__like_active" src="images/like__activ.png" alt="Значек - сердечко активный">
-        </div>
+          <button class="card__like"></button>
       </article>
 
       <article class="card">
         <img class="card__image" src="images/tarhankut.jpg" alt="Вид со склона скалы на море">
         <div class="card__post">
           <h2 class="card__title">Тарханкут</h2>
-          <img class="card__like" src="images/like.svg" alt="Значек - сердечко">
-          <img class="card__like card__like_active" src="images/like__activ.png" alt="Значек - сердечко активный">
+          <button class="card__like"></button>
         </div>
       </article>
 
@@ -58,8 +52,7 @@
         <img class="card__image" src="images/kvodopad.jpg" alt="Водопад бегущий по камням">
         <div class="card__post">
           <h2 class="card__title">Кинзелюкский водопад</h2>
-          <img class="card__like" src="images/like.svg" alt="Значек - сердечко">
-          <img class="card__like card__like_active" src="images/like__activ.png" alt="Значек - сердечко активный">
+          <button class="card__like"></button>
         </div>
       </article>
 
@@ -67,8 +60,7 @@
         <img class="card__image" src="images/altay.jpg" alt="Вид с берега озера на другой берег и горы">
         <div class="card__post">
           <h2 class="card__title">Алтай</h2>
-          <img class="card__like" src="images/like.svg" alt="Значек - сердечко">
-          <img class="card__like card__like_active" src="images/like__activ.png" alt="Значек - сердечко активный">
+          <button class="card__like"></button>
         </div>
       </article>
 
@@ -76,8 +68,7 @@
         <img class="card__image" src="images/bigbogdo.jpg"  alt="Красно-зеленые горы">
         <div class="card__post">
           <h2 class="card__title">Гора Большое Богдо</h2>
-          <img class="card__like" src="images/like.svg" alt="Значек - сердечко">
-          <img class="card__like card__like_active" src="images/like__activ.png" alt="Значек - сердечко активный">
+          <button class="card__like"></button>
         </div>
       </article>
     </section>
@@ -90,10 +81,9 @@
   <section class="popup">
     <div class="popup__container">
       <button class="popup__close-icon"></button>
-      <!--<img class="popup__close-icon" alt="Иконка закрыть" src="images/Close_Icon.png">-->
       <div class="popup__content">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form">
+        <form class="popup__form" type="submit">
           <input type="text" name="username" value="Жак-Ив Кусто" placeholder="Имя" class="popup__input popup__input_type_name">
           <input type="text" name="job" value="Исследователь океана" placeholder="Работа" class="popup__input popup__input_type_job">
         </form>
