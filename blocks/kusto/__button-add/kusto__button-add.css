@@ -4,6 +4,7 @@
   border: 1px solid #fff;
   opacity: 1;
   background-color: #000;
+  transition: opacity 0.2s linear 0.1s;
 }
 
 .kusto__button-add:hover {

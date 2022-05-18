@@ -4,9 +4,8 @@
   font-weight: 900;
   color: #000;
   margin: 0;
-  display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 200px;
+  width: calc(100% - 21px * 2);
 }

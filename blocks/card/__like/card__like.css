@@ -2,6 +2,7 @@
   width: 22px;
   height: 19px;
   opacity: 1;
+  transition: opacity 0.2s linear 0.1s;
 }
 
 .card__like:hover {

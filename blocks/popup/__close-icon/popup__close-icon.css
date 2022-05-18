@@ -5,6 +5,7 @@
   right: -40px;
   top: -40px;
   opacity: 1;
+  transition: opacity 0.2s linear 0.1s;
 }
 .popup__close-icon:hover {
   opacity: 0.5;

@@ -3,6 +3,7 @@
   height: 24px;
   margin-bottom: 8px;
   opacity: 1;
+  transition: opacity 0.2s linear 0.1s;
 }
 
 .kusto__edit:hover {
