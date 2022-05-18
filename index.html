@@ -14,16 +14,14 @@
   </header>
 
   <main class="content">
-    <section class="kusto">
-      <div class="kusto__container">
-        <img class="kusto__photo" src="images/kusto__photo.jpg" alt="Фото профиля, путишественник Кусто в красной шапке">
-        <div class="kusto__text-box">
-          <h1 class="kusto__title">Жак-Ив Кусто</h1>
-          <img class="kusto__edit" src="images/Edit_Button.svg" alt="Кнопка редактировать информацию о себе">
-          <p class="kusto__subtitle">Исследователь океана</p>
-        </div>
-        <button class="kusto__button-add"><img class="kusto__add" src="images/kusto_add.png" alt="Кнопка дбавить пост"></button>
+    <section class="profile">
+      <img class="profile__photo" src="images/kusto__photo.jpg" alt="Фото профиля, путишественник Кусто в красной шапке">
+      <div class="profile__text-box">
+        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <img class="profile__edit" src="images/Edit_Button.svg" alt="Кнопка редактировать информацию о себе">
+        <p class="profile__subtitle">Исследователь океана</p>
       </div>
+      <button class="profile__button-add"><img class="profile__add" src="images/kusto_add.png" alt="Кнопка дбавить пост"></button>
     </section>
 
     <section class="cards" aria-label="Блок с карточками мест">
@@ -31,8 +29,10 @@
         <img class="card__image" src="images/kareliya.jpg" alt="Резкий склон скалы">
         <div class="card__post">
           <h2 class="card__title">Карелия</h2>
-          <img class="card__like" src="images/like.svg" alt="Значек - сердечко">
+          <div class="card__like"></div> 
+         <!-- <img class="card__like" src="images/like.svg" alt="Значек - сердечко">
           <img class="card__like card__like_active" src="images/like__activ.png" alt="Значек - сердечко активный">
+         -->
         </div>
       </article>
 
@@ -87,16 +87,17 @@
     <p class="footer__text">© 2020 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup_opened">
+  <section class="popup">
     <div class="popup__container">
-      <img class="popup__close-icon" alt="Иконка закрыть" src="images/Close_Icon.png">
+      <button class="popup__close-icon"></button>
+      <!--<img class="popup__close-icon" alt="Иконка закрыть" src="images/Close_Icon.png">-->
       <div class="popup__content">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <div class="popup__form">
+        <form class="popup__form">
           <input type="text" name="username" value="Жак-Ив Кусто" placeholder="Имя" class="popup__input popup__input_type_name">
           <input type="text" name="job" value="Исследователь океана" placeholder="Работа" class="popup__input popup__input_type_job">
-        </div>
-        <button class="popup__button">Сохранить</button>
+        </form>
+        <button type="submit" class="popup__save-button">Сохранить</button>
       </div>
     </div>
   </section>

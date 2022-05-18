@@ -1,4 +1,4 @@
-.kusto__text-box {
+.profile__text-box {
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 950px) {
-  .kusto__text-box {
+  .profile__text-box {
     margin: 22px 0 14px 36px;
     grid-gap: 10px;
   }

@@ -1,19 +1,22 @@
-const editButton = document.querySelector(".kusto__edit");
+const editButton = document.querySelector(".profile__edit");
 const popup = document.querySelector(".popup");
 const closeButton = popup.querySelector(".popup__close-icon");
+let nameProfile = document.querySelector(".profile__title");
+let job = document.querySelector(".profile__subtitle");
 
-function openForm() {
-  popup.classList.remove("popup_opened");
+function openСloseForm() {
+  popup.classList.toggle("popup_opened");
 }
-editButton.addEventListener("click", openForm);
 
-function closeForm() {
-  popup.classList.add("popup_opened");
-}
-closeButton.addEventListener("click", closeForm);
+editButton.addEventListener("click", openСloseForm);
+closeButton.addEventListener("click", function () {
+  nameInput.value = nameProfile.textContent;
+  jobInput.value = job.textContent;
+  openСloseForm();
+});
 
 const formInput = popup.querySelector(".popup__form");
-const saveButton = popup.querySelector(".popup__button");
+const saveButton = popup.querySelector(".popup__save-button");
 const nameInput = popup.querySelector(".popup__input_type_name");
 const jobInput = popup.querySelector(".popup__input_type_job");
 
@@ -24,11 +27,9 @@ formInput.addEventListener("submit", function () {
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
-  const name = document.querySelector(".kusto__title");
-  const job = document.querySelector(".kusto__subtitle");
-  name.textContent = nameInput.value;
+  nameProfile.textContent = nameInput.value;
   job.textContent = jobInput.value;
-  closeForm();
+  openСloseForm();
 }
 
 saveButton.addEventListener("click", formSubmitHandler);

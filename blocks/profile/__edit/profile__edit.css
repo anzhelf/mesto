@@ -1,4 +1,4 @@
-.kusto__edit {
+.profile__edit {
   width: 24px;
   height: 24px;
   margin-bottom: 8px;
@@ -6,13 +6,13 @@
   transition: opacity 0.2s linear 0.1s;
 }
 
-.kusto__edit:hover {
+.profile__edit:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
 @media screen and (max-width: 950px) {
-  .kusto__edit {
+  .profile__edit {
     width: 18px;
     height: 18px;
     margin: auto;

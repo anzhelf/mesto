@@ -1,4 +1,4 @@
-.kusto__button-add {
+.profile__button-add {
   width: 150px;
   height: 50px;
   border: 1px solid #fff;
@@ -7,13 +7,13 @@
   transition: opacity 0.2s linear 0.1s;
 }
 
-.kusto__button-add:hover {
+.profile__button-add:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
 @media screen and (max-width: 950px) {
-  .kusto__button-add {
+  .profile__button-add {
     width: 282px;
     height: 50px;
   }
