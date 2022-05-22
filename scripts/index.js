@@ -8,7 +8,7 @@ const saveButton = popup.querySelector(".popup__save-button");
 const nameInput = popup.querySelector(".popup__input_type_name");
 const jobInput = popup.querySelector(".popup__input_type_job");
 
-function openСlosePopup() {
+function togglePopup() {
   popup.classList.toggle("popup_opened");
 }
 
@@ -17,16 +17,16 @@ function handleFormSubmit(evt) {
 
   nameProfile.textContent = nameInput.value;
   job.textContent = jobInput.value;
-  openСlosePopup();
+  togglePopup();
 }
 
 closeButton.addEventListener("click", function () {
   nameInput.value = nameProfile.textContent;
   jobInput.value = job.textContent;
-  openСlosePopup();
+  togglePopup();
 });
 
-editButton.addEventListener("click", openСlosePopup);
+editButton.addEventListener("click", togglePopup);
 saveButton.addEventListener("click", handleFormSubmit);
 
 blockFormInput.addEventListener("submit", function () {

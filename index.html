@@ -18,10 +18,10 @@
       <img class="profile__photo" src="images/kusto__photo.jpg" alt="Фото профиля, путишественник Кусто в красной шапке">
       <div class="profile__text-box">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <button class="profile__edit"></button>
+        <button class="profile__edit" aria-label="Иконка редактировать информацию о себе"></button>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <button class="profile__button-add"></button>
+      <button class="profile__button-add" aria-label="Иконка добавить пост"></button>
     </section>
 
     <section class="cards" aria-label="Блок с карточками мест">
@@ -29,7 +29,7 @@
         <img class="card__image" src="images/kareliya.jpg" alt="Резкий склон скалы">
         <div class="card__post">
           <h2 class="card__title">Карелия</h2>
-          <button class="card__like"></button>
+          <button class="card__like" aria-label="Иконка лайк"></button>
         </div>
       </article>
 
@@ -37,7 +37,7 @@
         <img class="card__image" src="images/big-bermamit.jpg" alt="Песчаные горы днем">
         <div class="card__post">
           <h2 class="card__title">Большой бермамыт</h2>
-          <button class="card__like"></button>
+          <button class="card__like" aria-label="Иконка лайк"></button>
         </div>
       </article>
 
@@ -45,7 +45,7 @@
         <img class="card__image" src="images/tarhankut.jpg" alt="Вид со склона скалы на море">
         <div class="card__post">
           <h2 class="card__title">Тарханкут</h2>
-          <button class="card__like"></button>
+          <button class="card__like" aria-label="Иконка лайк"></button>
         </div>
       </article>
 
@@ -53,7 +53,7 @@
         <img class="card__image" src="images/kvodopad.jpg" alt="Водопад бегущий по камням">
         <div class="card__post">
           <h2 class="card__title">Кинзелюкский водопад</h2>
-          <button class="card__like"></button>
+          <button class="card__like" aria-label="Иконка лайк"></button>
         </div>
       </article>
 
@@ -61,7 +61,7 @@
         <img class="card__image" src="images/altay.jpg" alt="Вид с берега озера на другой берег и горы">
         <div class="card__post">
           <h2 class="card__title">Алтай</h2>
-          <button class="card__like"></button>
+          <button class="card__like" aria-label="Иконка лайк"></button>
         </div>
       </article>
 
@@ -69,7 +69,7 @@
         <img class="card__image" src="images/bigbogdo.jpg"  alt="Красно-зеленые горы">
         <div class="card__post">
           <h2 class="card__title">Гора Большое Богдо</h2>
-          <button class="card__like"></button>
+          <button class="card__like" aria-label="Иконка лайк"></button>
         </div>
       </article>
     </section>
@@ -81,14 +81,14 @@
 
   <section class="popup">
     <div class="popup__container">
-      <button class="popup__close-icon"></button>
+      <button class="popup__close-icon" aria-label="Иконка закрыть"></button>
       <div class="popup__content">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form">
           <input type="text" name="username" value="Жак-Ив Кусто" placeholder="Имя" class="popup__input popup__input_type_name">
           <input type="text" name="job" value="Исследователь океана" placeholder="Работа" class="popup__input popup__input_type_job">
+          <button type="submit" class="popup__save-button" aria-label="Иконка сохранить">Сохранить</button>
         </form>
-        <button type="submit" class="popup__save-button">Сохранить</button>
       </div>
     </div>
   </section>
