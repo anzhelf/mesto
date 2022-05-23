@@ -19,7 +19,6 @@ function togglePopup() {
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
-
   nameProfile.textContent = nameInput.value;
   job.textContent = jobInput.value;
   togglePopup();
