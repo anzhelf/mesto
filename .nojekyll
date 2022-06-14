@@ -1,0 +1,10 @@
+closeButton.addEventListener("click", togglePopup);//
+blockFormInput.addEventListener("submit", handleFormSubmit);//
+
+function handleFormSubmitAdd(evt) {
+  evt.preventDefault();
+  nameProfile.textContent = nameInput.value;
+  job.textContent = jobInput.value;
+  togglePopup();
+  console.log("Форма отправлена");
+}
