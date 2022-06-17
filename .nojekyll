@@ -1,10 +1,51 @@
-closeButton.addEventListener("click", togglePopup);//
-blockFormInput.addEventListener("submit", handleFormSubmit);//
+const editButton = document.querySelector(".profile__edit");
+const popup = document.querySelector(".popup");
+const closeButton = popup.querySelector(".popup__close-icon");
+const nameProfile = document.querySelector(".profile__title");
+const job = document.querySelector(".profile__subtitle");
+const blockFormInput = popup.querySelector(".popup__form");
+const saveButton = popup.querySelector(".popup__save-button");
+const nameInput = popup.querySelector(".popup__input_type_name");
+const jobInput = popup.querySelector(".popup__input_type_job");
 
-function handleFormSubmitAdd(evt) {
+function togglePopup() {
+  popup.classList.toggle("popup_opened");
+
+  if (popup.classList.contains("popup_opened") === false) {
+    nameInput.value = nameProfile.textContent;
+    jobInput.value = job.textContent;
+  }
+}
+
+function handleFormSubmit(evt) {
   evt.preventDefault();
+
   nameProfile.textContent = nameInput.value;
   job.textContent = jobInput.value;
   togglePopup();
   console.log("Форма отправлена");
 }
+
+editButton.addEventListener("click", togglePopup);
+closeButton.addEventListener("click", togglePopup);
+blockFormInput.addEventListener("submit", handleFormSubmit);
+
+
+/////////////////////////////////////////////////////////////////////////
+
+deleteButtton.addEventListener("click", cardDelete);
+
+function cardDelete() {
+  cards.remove();
+  console.log("Карточка удалена");
+}
+
+const card = templateCard.querySelector('.card').cloneNode(true);
+const likeButton = card.querySelector('.card__like');
+
+console.log(likeButton);
+
+likeButton.addEventListener('click', (evt) => {
+  console.log('click');
+  //evt.target.classList.toggle("card__like_active");
+});
