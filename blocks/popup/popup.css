@@ -9,4 +9,7 @@
   /*display: none;*/
   justify-content: center;
   align-items: center;
+	transition: opacity 0.2s linear 0.1s;
+	visibility: hidden;
+	opacity: 1;
 }
