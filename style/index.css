@@ -28,7 +28,7 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
 
-@import url(../blocks/popup-card/__container/popup-card__container.css);
+@import url(../blocks/popup/__card-container/popup__card-container.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
@@ -41,5 +41,5 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 
-@import url(../blocks/popup-card/__image/popup-card__image.css);
-@import url(../blocks/popup-card/__title/popup-card__title.css);
+@import url(../blocks/popup/__card-image/popup__card-image.css);
+@import url(../blocks/popup/__card-title/popup__card-title.css);

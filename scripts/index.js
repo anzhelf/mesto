@@ -37,14 +37,14 @@ const addButton = document.querySelector(".profile__button-add");
 const nameProfile = document.querySelector(".profile__title");
 const job = document.querySelector(".profile__subtitle");
 
-const popupEdit = popup.querySelector('.popup_edit');//формы
+const popupEdit = popup.querySelector('.popup__container_edit');//формы
 const blockFormInputEdit = popupEdit.querySelector(".popup__form");
 const nameInput = popupEdit.querySelector(".popup__input_type_name");
 const jobInput = popupEdit.querySelector(".popup__input_type_job");
 const saveButtonEdit = popupEdit.querySelector(".popup__save-button");
 const closeButton = popupEdit.querySelector(".popup__close-icon");
 
-const popupAdd = popup.querySelector('.popup_add');
+const popupAdd = popup.querySelector('.popup__container_add');
 const blockFormInputAdd = popupAdd.querySelector(".popup__form");
 const nameCardInput = popupAdd.querySelector(".popup__input_type_name");
 const cardImageInput = popupAdd.querySelector(".popup__input_type_job");
@@ -168,7 +168,7 @@ function openPopapImage(evt) {
 	const cardImage = cardElement.querySelector('.card__image');
 	const cardName = cardElement.querySelector('.card__title');
 
-	const popupImage = document.querySelector(".popup-card__container");
+	const popupImage = document.querySelector(".popup__card-container");
 
 	console.log(cardName);
 
@@ -178,8 +178,8 @@ function openPopapImage(evt) {
 	}
 	togglePopupImage();
 
-	const popupImagePlace = popupImage.querySelector('.popup-card__image');
-	const popupTextPlace = popupImage.querySelector('.popup-card__title');
+	const popupImagePlace = popupImage.querySelector('.popup__card-image');
+	const popupTextPlace = popupImage.querySelector('.popup__card-title');
 
 	// заменяем содержимое
 	popupImagePlace.src = cardImage.getAttribute('src');
@@ -199,4 +199,3 @@ blockFormInputEdit.addEventListener("submit", handleFormSubmit);
 
 addButton.addEventListener('click', togglePopupAdd);
 closeButtonAdd.addEventListener("click", togglePopupAdd);
-
