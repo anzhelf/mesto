@@ -51,6 +51,8 @@ const cardImageInput = popupAdd.querySelector(".popup__input_type_job");
 const saveButtonAdd = popupAdd.querySelector(".popup__save-button");
 const closeButtonAdd = popupAdd.querySelector(".popup__close-icon");
 
+
+
 //перебирает массив с карточками
 function renderList(data) {
 	data.forEach(function (item) {
@@ -169,8 +171,6 @@ function openPopapImage(evt) {
 	const cardName = cardElement.querySelector('.card__title');
 
 	const popupImage = document.querySelector(".popup__card-container");
-
-	console.log(cardName);
 
 	function togglePopupImage() {
 		popup.classList.toggle("popup_opened");
