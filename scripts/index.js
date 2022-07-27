@@ -57,7 +57,7 @@ function renderList(data) {
 
 function submitCard(evt) {
 	evt.preventDefault();
-	const nevCard = { name: nameCardInput.value, link: cardImageInput.value};
+	const nevCard = { name: nameCardInput.value, link: cardImageInput.value };
 	renderItem(nevCard);
 	addCard(renderItem(nevCard));
 	closePopup(popupAdd);
@@ -69,7 +69,7 @@ function renderItem(content) {
 	const card = templateCard.querySelector('.card').cloneNode(true);
 	const cardImage = card.querySelector('.card__image');
 	const cardText = card.querySelector('.card__title');
-	
+
 	const butttonDelete = card.querySelector('.card__delete');
 	const buttonLike = card.querySelector('.card__like');
 
@@ -80,7 +80,7 @@ function renderItem(content) {
 
 	//вешаем слушатели
 	cardImage.addEventListener('click', () => openPopapImage(cardText.textContent, cardImage.src, cardImage.alt));
-  
+
 
 	butttonDelete.addEventListener('click', deleteCard);
 	buttonLike.addEventListener('click', likeCard);
@@ -88,7 +88,7 @@ function renderItem(content) {
 	return card;
 }
 
-function addCard(element){
+function addCard(element) {
 	cardsContainer.prepend(element);
 }
 
@@ -123,15 +123,15 @@ function closePopup(popup) {
 
 //очищаем поля
 function clearForm(popup) {
-	switch(popup){
+	switch (popup) {
 		case popupAdd:
-		  blockFormInputAdd.reset();
-		break;
+			blockFormInputAdd.reset();
+			break;
 
 		case popupEdit:
-		  nameInput.value = nameProfile.textContent;
+			nameInput.value = nameProfile.textContent;
 			jobInput.value = job.textContent;
-		break;
+			break;
 	}
 };
 
