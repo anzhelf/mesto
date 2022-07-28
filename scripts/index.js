@@ -50,7 +50,6 @@ function deleteCard(evt) {
 //перебирает массив с карточками
 function renderList(data) {
 	data.forEach(function (item) {
-		renderItem(item);
 		addCard(renderItem(item));
 	});
 }
@@ -58,7 +57,6 @@ function renderList(data) {
 function submitCard(evt) {
 	evt.preventDefault();
 	const nevCard = { name: nameCardInput.value, link: cardImageInput.value };
-	renderItem(nevCard);
 	addCard(renderItem(nevCard));
 	closePopup(popupAdd);
 }
@@ -114,7 +112,6 @@ function openPopapImage(name, link, alt) {
 //открыть попап
 function openPopup(popup) {
 	popup.classList.add("popup_opened");
-	clearForm(popup);
 }
 //закрыть попап
 function closePopup(popup) {
@@ -135,8 +132,13 @@ function clearForm(popup) {
 	}
 };
 
+function openClearPopup (popup) {
+	clearForm(popup);
+	openPopup(popup);
+}
+
 renderList(initialCards);// добавить 6 карточек из массива
-buttonEdit.addEventListener('click', () => openPopup(popupEdit));
-buttonAdd.addEventListener('click', () => openPopup(popupAdd));
+buttonEdit.addEventListener('click', () => openClearPopup(popupEdit));
+buttonAdd.addEventListener('click', () => openClearPopup(popupAdd));
 blockFormInputEdit.addEventListener("submit", editProfile);
 blockFormInputAdd.addEventListener("submit", submitCard);
