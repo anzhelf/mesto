@@ -1,9 +1,9 @@
-.popup__input-error_form1 {
+.popup__input-error_form-name {
 	bottom: 175px;
 }
 
 @media screen and (max-width: 950px) {
-	.popup__input-error_form1 {
+	.popup__input-error_form-job {
 		bottom: 155px;
 	}
 }
