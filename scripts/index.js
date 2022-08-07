@@ -112,6 +112,19 @@ function openPopapImage(name, link, alt) {
 //открыть попап
 function openPopup(popup) {
 	popup.classList.add("popup_opened");
+
+	//слушатель
+	popup.addEventListener('click', function (evt) {
+		if (!evt.target.closest('.popup__box')) {
+			closePopup(popup);
+		}
+
+	})
+	popup.addEventListener("keydown", function (evt) {
+		if (evt.key === "Escape") {
+			closePopup(popup);
+		}
+	})
 }
 //закрыть попап
 function closePopup(popup) {
@@ -123,6 +136,7 @@ function clearForm(popup) {
 	switch (popup) {
 		case popupAdd:
 			blockFormInputAdd.reset();
+
 			break;
 
 		case popupEdit:
@@ -132,7 +146,7 @@ function clearForm(popup) {
 	}
 };
 
-function openClearPopup (popup) {
+function openClearPopup(popup) {
 	clearForm(popup);
 	openPopup(popup);
 }
