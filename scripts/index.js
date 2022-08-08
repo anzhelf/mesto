@@ -109,34 +109,41 @@ function openPopapImage(name, link, alt) {
 	openPopup(popupImage);
 }
 
+function closeTabOverlay(evt) {
+	if (evt.target === evt.currentTarget) {
+		const deleteElement = document.querySelector(".popup_opened");
+		deleteElement.classList.remove("popup_opened");
+	}
+}
+
+	function closeTabKeydown(evt) {
+		if (evt.key === "Escape"){
+			const deleteElement = document.querySelector(".popup_opened");
+		  deleteElement.classList.remove("popup_opened");
+		}
+	}
+
 //открыть попап
 function openPopup(popup) {
 	popup.classList.add("popup_opened");
 
-	//слушатель
-	popup.addEventListener('click', function (evt) {
-		if (!evt.target.closest('.popup__box')) {
-			closePopup(popup);
-		}
-
-	})
-	popup.addEventListener("keydown", function (evt) {
-		if (evt.key === "Escape") {
-			closePopup(popup);
-		}
-	})
+	popup.addEventListener('click', closeTabOverlay);
+	document.addEventListener('keydown', closeTabKeydown);
 }
 //закрыть попап
 function closePopup(popup) {
 	popup.classList.remove("popup_opened");
+
+	popup.removeEventListener('click', closeTabOverlay);
+	document.removeEventListener('keydown', closeTabKeydown);
+	
 }
 
-//очищаем поля
-function clearForm(popup) {
+//очищаем и заполняем поля
+function clearFillForm(popup) {
 	switch (popup) {
 		case popupAdd:
 			blockFormInputAdd.reset();
-
 			break;
 
 		case popupEdit:
@@ -146,13 +153,13 @@ function clearForm(popup) {
 	}
 };
 
-function openClearPopup(popup) {
-	clearForm(popup);
+function openClearFillPopup(popup) {
+	clearFillForm(popup);
 	openPopup(popup);
 }
 
 renderList(initialCards);// добавить 6 карточек из массива
-buttonEdit.addEventListener('click', () => openClearPopup(popupEdit));
-buttonAdd.addEventListener('click', () => openClearPopup(popupAdd));
+buttonEdit.addEventListener('click', () => openClearFillPopup(popupEdit));
+buttonAdd.addEventListener('click', () => openClearFillPopup(popupAdd));
 blockFormInputEdit.addEventListener("submit", editProfile);
 blockFormInputAdd.addEventListener("submit", submitCard);

@@ -1,13 +1,16 @@
-const formElement = document.querySelector('.popup__form');
-const formInput = formElement.querySelector('.popup__input');
+const settingsCheck = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+	popupSaveButtonInactive: 'popup__save-button_inactive',
+	popupSaveButton: '.popup__save-button',
+	inputTypeError: 'popup__input_type_error',
+	inputError: 'popup__input-error',
+}
 
 // Функция проверки полей
 const hasInvalidInput = (inputList) => {
-
   return inputList.some((inputElement) => {
-
     return !inputElement.validity.valid;
-
   })
 }
 
@@ -15,21 +18,21 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement) => {
 
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__save-button_inactive');
+    buttonElement.classList.add(settingsCheck.popupSaveButtonInactive);
 		buttonElement.setAttribute('disabled', true);
   }
 
 	else {
 		buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove('popup__save-button_inactive');
+    buttonElement.classList.remove(settingsCheck.popupSaveButtonInactive);
   }
 }
 
 //добавить слушатели всем эл формы
 const setEventListeners = (formElement) => {
 
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-	const buttonElement = formElement.querySelector('.popup__save-button');
+  const inputList = Array.from(formElement.querySelectorAll(settingsCheck.inputSelector));
+	const buttonElement = formElement.querySelector(settingsCheck.popupSaveButton);
 	toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
@@ -44,11 +47,9 @@ const setEventListeners = (formElement) => {
 
 //повесить слушатели всем формам
 const enableValidation = () => {
-
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
-
+	const formElement = document.querySelector(settingsCheck.formSelector);
+  const formList = Array.from(document.querySelectorAll(settingsCheck.formSelector));
   formList.forEach((formElement) => {
-
     setEventListeners(formElement);
   });
 }
@@ -61,17 +62,17 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 
   const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
 
-  inputElement.classList.add('popup__input_type_error');
+  inputElement.classList.add(settingsCheck.inputTypeError);
 	errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error');
+  errorElement.classList.add(settingsCheck.inputError);
 }
   
 //скрыть элемент ошибки
 const hideInputError = (formElement, inputElement) => {
 	const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
 
-  inputElement.classList.remove('popup__input_type_error');
-	errorElement.classList.remove('popup__input-error');
+  inputElement.classList.remove(settingsCheck.inputTypeError);
+	errorElement.classList.remove(settingsCheck.inputError);
 	errorElement.textContent = '';
 }
 
