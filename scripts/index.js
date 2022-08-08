@@ -56,8 +56,8 @@ function renderList(data) {
 
 function submitCard(evt) {
 	evt.preventDefault();
-	const nevCard = { name: nameCardInput.value, link: cardImageInput.value };
-	addCard(renderItem(nevCard));
+	const newCard = { name: nameCardInput.value, link: cardImageInput.value };
+	addCard(renderItem(newCard));
 	closePopup(popupAdd);
 }
 
@@ -111,25 +111,21 @@ function openPopapImage(name, link, alt) {
 
 function closeTabOverlay(evt) {
 	if (evt.target === evt.currentTarget) {
-		const deleteElement = document.querySelector(".popup_opened");
-		deleteElement.classList.remove("popup_opened");
+		closePopup(evt.target);
 	}
 }
 
 	function closeTabKeydown(evt) {
 		if (evt.key === "Escape"){
 			const deleteElement = document.querySelector(".popup_opened");
-		  deleteElement.classList.remove("popup_opened");
+		  closePopup(deleteElement);
 		}
 	}
 
 //открыть попап
-function openPopup(popup, settings) {
+function openPopup(popup) {
+	
 	popup.classList.add("popup_opened");
-	const formElement = document.querySelector(settings.formSelector);
-	const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
-	const buttonElement = formElement.querySelector(settings.popupSaveButton);
-	toggleButtonState(inputList, buttonElement, settings);
 
 	popup.addEventListener('click', closeTabOverlay);
 	document.addEventListener('keydown', closeTabKeydown);
@@ -143,27 +139,23 @@ function closePopup(popup) {
 	
 }
 
-//очищаем и заполняем поля
-function clearFillForm(popup) {
-	switch (popup) {
-		case popupAdd:
-			blockFormInputAdd.reset();
-			break;
-
-		case popupEdit:
-			nameInput.value = nameProfile.textContent;
-			jobInput.value = job.textContent;
-			break;
-	}
-};
-
-function openClearFillPopup(popup) {
-	clearFillForm(popup);
-	openPopup(popup, settings);
-}
-
 renderList(initialCards);// добавить 6 карточек из массива
-buttonEdit.addEventListener('click', () => openClearFillPopup(popupEdit));
-buttonAdd.addEventListener('click', () => openClearFillPopup(popupAdd));
+
+buttonEdit.addEventListener('click', function() {
+	nameInput.value = nameProfile.textContent;
+	jobInput.value = job.textContent;
+	openPopup(popupEdit);
+
+});
+
+buttonAdd.addEventListener('click', function(){
+	blockFormInputAdd.reset();
+	openPopup(popupAdd);
+	  const buttonElement = document.querySelector('.popup__save-button');
+		buttonElement.classList.add('popup__save-button_inactive');
+		buttonElement.setAttribute('disabled', 'disabled');
+		console.log(buttonElement);
+});
+
 blockFormInputEdit.addEventListener("submit", editProfile);
 blockFormInputAdd.addEventListener("submit", submitCard);

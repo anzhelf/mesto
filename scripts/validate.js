@@ -78,7 +78,6 @@ const hideInputError = (formElement, inputElement, settings) => {
 
 //проверить валидность и вызвать функцию ошибки или нет
 const checkInputValidity = (formElement, inputElement, settings) => {
-
 	if (!inputElement.validity.valid) {
 		showInputError(formElement, inputElement, inputElement.validationMessage, settings);
 
