@@ -1,9 +1,0 @@
-.popup__input-error-name {
-	bottom: 175px;
-}
-
-@media screen and (max-width: 950px) {
-	.popup__input-error-name {
-		bottom: 155px;
-	}
-}

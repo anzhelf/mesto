@@ -124,8 +124,12 @@ function closeTabOverlay(evt) {
 	}
 
 //открыть попап
-function openPopup(popup) {
+function openPopup(popup, settings) {
 	popup.classList.add("popup_opened");
+	const formElement = document.querySelector(settings.formSelector);
+	const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+	const buttonElement = formElement.querySelector(settings.popupSaveButton);
+	toggleButtonState(inputList, buttonElement, settings);
 
 	popup.addEventListener('click', closeTabOverlay);
 	document.addEventListener('keydown', closeTabKeydown);
@@ -155,7 +159,7 @@ function clearFillForm(popup) {
 
 function openClearFillPopup(popup) {
 	clearFillForm(popup);
-	openPopup(popup);
+	openPopup(popup, settings);
 }
 
 renderList(initialCards);// добавить 6 карточек из массива

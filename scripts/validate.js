@@ -1,6 +1,6 @@
-const settingsCheck = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
+const settings = {
+	formSelector: '.popup__form',
+	inputSelector: '.popup__input',
 	popupSaveButtonInactive: 'popup__save-button_inactive',
 	popupSaveButton: '.popup__save-button',
 	inputTypeError: 'popup__input_type_error',
@@ -9,80 +9,80 @@ const settingsCheck = {
 
 // Функция проверки полей
 const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  })
+	return inputList.some((inputElement) => {
+		return !inputElement.validity.valid;
+	})
 }
 
 // выкл вкл кнопка
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, settings) => {
 
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(settingsCheck.popupSaveButtonInactive);
+	if (hasInvalidInput(inputList)) {
+		buttonElement.classList.add(settings.popupSaveButtonInactive);
 		buttonElement.setAttribute('disabled', true);
-  }
+	}
 
 	else {
 		buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove(settingsCheck.popupSaveButtonInactive);
-  }
+		buttonElement.classList.remove(settings.popupSaveButtonInactive);
+	}
 }
 
 //добавить слушатели всем эл формы
-const setEventListeners = (formElement) => {
+const setEventListeners = (formElement, settings) => {
 
-  const inputList = Array.from(formElement.querySelectorAll(settingsCheck.inputSelector));
-	const buttonElement = formElement.querySelector(settingsCheck.popupSaveButton);
-	toggleButtonState(inputList, buttonElement);
+	const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+	const buttonElement = formElement.querySelector(settings.popupSaveButton);
+	toggleButtonState(inputList, buttonElement, settings);
 
-  inputList.forEach((inputElement) => {
+	inputList.forEach((inputElement) => {
 
-    inputElement.addEventListener('input', () => {
+		inputElement.addEventListener('input', () => {
 
-      checkInputValidity(formElement, inputElement);
-			toggleButtonState(inputList, buttonElement);
-    });
-  });
+			checkInputValidity(formElement, inputElement, settings);
+			toggleButtonState(inputList, buttonElement, settings);
+		});
+	});
 }
 
 //повесить слушатели всем формам
-const enableValidation = () => {
-	const formElement = document.querySelector(settingsCheck.formSelector);
-  const formList = Array.from(document.querySelectorAll(settingsCheck.formSelector));
-  formList.forEach((formElement) => {
-    setEventListeners(formElement);
-  });
+function enableValidation(settings) {
+	const formElement = document.querySelector(settings.formSelector);
+	const formList = Array.from(document.querySelectorAll(settings.formSelector));
+	formList.forEach((formElement) => {
+		setEventListeners(formElement, settings);
+	});
 }
 
-enableValidation();
+enableValidation(settings);
 
 
 //показать элемент ошибки
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, settings) => {
 
-  const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
-
-  inputElement.classList.add(settingsCheck.inputTypeError);
-	errorElement.textContent = errorMessage;
-  errorElement.classList.add(settingsCheck.inputError);
-}
-  
-//скрыть элемент ошибки
-const hideInputError = (formElement, inputElement) => {
 	const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
 
-  inputElement.classList.remove(settingsCheck.inputTypeError);
-	errorElement.classList.remove(settingsCheck.inputError);
+	inputElement.classList.add(settings.inputTypeError);
+	errorElement.textContent = errorMessage;
+	errorElement.classList.add(settings.inputError);
+}
+
+//скрыть элемент ошибки
+const hideInputError = (formElement, inputElement, settings) => {
+	const errorElement = formElement.querySelector(`.${inputElement.id}-input-error`);
+
+	inputElement.classList.remove(settings.inputTypeError);
+	errorElement.classList.remove(settings.inputError);
 	errorElement.textContent = '';
 }
 
 //проверить валидность и вызвать функцию ошибки или нет
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, settings) => {
 
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+	if (!inputElement.validity.valid) {
+		showInputError(formElement, inputElement, inputElement.validationMessage, settings);
 
-  } else {
-    hideInputError(formElement, inputElement);
-  }
+	} else {
+		hideInputError(formElement, inputElement, settings);
+	}
 }
