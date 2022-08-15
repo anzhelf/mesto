@@ -27,6 +27,8 @@ const buttonSaveAdd = popupAdd.querySelector(".popup__save-button");
 const popupCardLink = popupImage.querySelector('.popup__card-image');
 const popupCardImg = popupImage.querySelector('.popup__card-title');
 
+const buttonElement = document.querySelector('.popup__save-button_add');
+
 //кнопка закрыть
 const buttonsClose = Array.from(document.querySelectorAll('.popup__close-icon'));
 buttonsClose.forEach(function (item) {
@@ -115,16 +117,16 @@ function closeTabOverlay(evt) {
 	}
 }
 
-	function closeTabKeydown(evt) {
-		if (evt.key === "Escape"){
-			const deleteElement = document.querySelector(".popup_opened");
-		  closePopup(deleteElement);
-		}
+function closeTabKeydown(evt) {
+	if (evt.key === "Escape") {
+		const deleteElement = document.querySelector(".popup_opened");
+		closePopup(deleteElement);
 	}
+}
 
 //открыть попап
 function openPopup(popup) {
-	
+
 	popup.classList.add("popup_opened");
 
 	popup.addEventListener('click', closeTabOverlay);
@@ -136,25 +138,24 @@ function closePopup(popup) {
 
 	popup.removeEventListener('click', closeTabOverlay);
 	document.removeEventListener('keydown', closeTabKeydown);
-	
+
 }
 
 renderList(initialCards);// добавить 6 карточек из массива
 
-buttonEdit.addEventListener('click', function() {
+buttonEdit.addEventListener('click', function () {
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = job.textContent;
 	openPopup(popupEdit);
 
 });
 
-buttonAdd.addEventListener('click', function(){
+buttonAdd.addEventListener('click', function () {
 	blockFormInputAdd.reset();
 	openPopup(popupAdd);
-	  const buttonElement = document.querySelector('.popup__save-button');
-		buttonElement.classList.add('popup__save-button_inactive');
-		buttonElement.setAttribute('disabled', 'disabled');
-		console.log(buttonElement);
+	buttonElement.classList.add('popup__save-button_inactive');
+	buttonElement.setAttribute('disabled', 'disabled');
+	console.log(buttonElement);
 });
 
 blockFormInputEdit.addEventListener("submit", editProfile);
