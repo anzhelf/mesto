@@ -26,9 +26,7 @@ class Card {
 	_setEventListeners() {
 		this._element.querySelector('.card__like').addEventListener('click', () => this._handleLikeCard());
 		this._element.querySelector('.card__delete').addEventListener('click', () => this._handleDeleteCard());
-
 		this._element.querySelector('.card__image').addEventListener('click', () => this._handleOpenPopup());
-		buttonClose.addEventListener('click', () => this._handleClosePopup());
 	}
 
 	_handleLikeCard() {
@@ -45,10 +43,6 @@ class Card {
 		popupCardText.textContent = this._text;
 
 		openPopup(popupImage);
-  }
-  
-  _handleClosePopup() {
-		closePopup(popupImage);
   }
 }
 
