@@ -1,13 +1,4 @@
-const settings = {
-	form: '.popup__form',
-	input: '.popup__input',
-	buttonInactive: 'popup__save-button_inactive',
-	button: '.popup__save-button',
-	errorShow: 'popup__input_type_error',
-	inputErrorMessage: 'popup__input-error',
-}
-
-class FormValidator {
+export class FormValidator {
 	constructor(data, templateSelector) {
 		this._templateSelector = document.querySelector(templateSelector);
 		this._form = data.form;
@@ -39,7 +30,6 @@ class FormValidator {
 			});
 		});
 	}
-
 
 	// Функция, которая добавляет класс с ошибкой
 	_showInputError(formElement, inputElement) {
@@ -92,6 +82,3 @@ class FormValidator {
 		this._setEventListenersForm(form);
 	}
 }
-
-const formValidatorEdit = new FormValidator(settings, '.popup_profile_edit');
-const formValidatorAdd = new FormValidator(settings, '.popup_add_card');
