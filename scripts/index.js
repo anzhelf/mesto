@@ -44,7 +44,6 @@ function submitCard(evt) {
 	evt.preventDefault();
 	const card = new Card({ text: nameCardInput.value, image: cardImageInput.value }, '.card-template_type_default');
 	const cardElement = card.generateCard();
-
 	addCard(cardElement);
 	closePopup(popupAdd);
 }
@@ -56,10 +55,8 @@ function addCard(element) {
 //самбит редактирования профиля
 function editProfile(evt) {
 	evt.preventDefault();
-
 	nameProfile.textContent = nameInput.value;
 	job.textContent = jobInput.value;
-
 	closePopup(popupEdit);
 }
 
@@ -67,7 +64,7 @@ buttonEdit.addEventListener('click', function () {
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = job.textContent;
 	openPopup(popupEdit);
-
+	formValidatorEdit.enableValidation();
 });
 
 buttonAdd.addEventListener('click', function () {
@@ -75,6 +72,7 @@ buttonAdd.addEventListener('click', function () {
 	openPopup(popupAdd);
 	buttonElement.classList.add('popup__save-button_inactive');
 	buttonElement.setAttribute('disabled', 'disabled');
+	formValidatorAdd.enableValidation();
 });
 
 function closeTabOverlay(evt) {
@@ -92,9 +90,7 @@ function closeTabKeydown(evt) {
 
 //открыть попап
 function openPopup(popup) {
-
 	popup.classList.add("popup_opened");
-
 	popup.addEventListener('click', closeTabOverlay);
 	document.addEventListener('keydown', closeTabKeydown);
 }
@@ -102,10 +98,8 @@ function openPopup(popup) {
 //закрыть попап
 function closePopup(popup) {
 	popup.classList.remove("popup_opened");
-
 	popup.removeEventListener('click', closeTabOverlay);
 	document.removeEventListener('keydown', closeTabKeydown);
-
 }
 
 blockFormInputEdit.addEventListener("submit", editProfile);
