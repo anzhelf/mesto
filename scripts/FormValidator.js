@@ -1,6 +1,6 @@
 export class FormValidator {
-	constructor(data, templateSelector) {
-		this._templateSelector = document.querySelector(templateSelector);
+	constructor(data, popup) {
+		this._popup = popup;
 		this._form = data.form;
 		this._input = data.input;
 		this._errorShow = data.errorShow;
@@ -11,8 +11,8 @@ export class FormValidator {
 
 	//повесить слушатели всем формам
 	_setEventListenersForm(formElement) {
-		const formList = Array.from(document.querySelectorAll(this._form));
-		formList.forEach((formElement) => {
+		const formsList = Array.from(document.querySelectorAll(this._form));
+		formsList.forEach((formElement) => {
 			this._setEventListeners(formElement);
 		});
 	}
@@ -25,7 +25,7 @@ export class FormValidator {
 
 		inputList.forEach((inputElement) => {
 			inputElement.addEventListener('input', () => {
-				this._isValid(formElement, inputElement);
+				this._toggleInputError(formElement, inputElement);
 				this._toggleButtonState(inputList, buttonElement);
 			});
 		});
@@ -48,7 +48,7 @@ export class FormValidator {
 	}
 
 	// Функция, которая проверяет валидность поля
-	_isValid(formElement, inputElement) {
+	_toggleInputError(formElement, inputElement) {
 		if (!inputElement.validity.valid) {
 			this._showInputError(formElement, inputElement);
 		} else {
@@ -78,7 +78,7 @@ export class FormValidator {
 
 	//вкл валидацию
 	enableValidation() {
-		const form = this._templateSelector.querySelector(this._form);
+		const form = this._popup.querySelector(this._form);
 		this._setEventListenersForm(form);
 	}
 }
