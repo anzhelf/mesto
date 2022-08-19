@@ -79,15 +79,6 @@ initialCards.forEach((item) => {
 	document.querySelector('.cards').append(cardElement);
 });
 
-//кнопка закрыть
-const buttonsClose = Array.from(document.querySelectorAll('.popup__close-icon'));
-buttonsClose.forEach(function (item) {
-	item.addEventListener('click', function () {
-		const popup = item.closest('.popup');
-		closePopup(popup);
-	});
-});
-
 function submitCard(evt) {
 	evt.preventDefault();
 	const card = new Card({ text: nameCardInput.value, image: cardImageInput.value }, settings, '.card-template_type_default', handleOpenPopup);
@@ -112,41 +103,40 @@ buttonEdit.addEventListener('click', function () {
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = job.textContent;
 	openPopup(popupEdit);
-	formValidatorEdit.enableValidation();
 });
 
 buttonAdd.addEventListener('click', function () {
 	blockFormAdd.reset();
 	openPopup(popupAdd);
-	buttonElement.classList.add('popup__save-button_inactive');
+	buttonElement.classList.add(settings.buttonInactive);
 	buttonElement.setAttribute('disabled', 'disabled');
-	formValidatorAdd.enableValidation();
 });
 
-function closeTabOverlay(evt) {
-	if (evt.target === evt.currentTarget) {
-		closePopup(evt.target);
+//закрыть по кнопке и оверлею
+function closeTab(evt) {
+	if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-icon')) {
+		closePopup(evt.target.closest('.popup'));
 	}
 }
 
 function closeTabKeydown(evt) {
 	if (evt.key === "Escape") {
-		const deleteElement = document.querySelector(".popup_opened");
-		closePopup(deleteElement);
+		const popupOpen = document.querySelector(".popup_opened");
+		closePopup(popupOpen);
 	}
 }
 
 //открыть попап
 function openPopup(popup) {
 	popup.classList.add("popup_opened");
-	popup.addEventListener('click', closeTabOverlay);
+	popup.addEventListener('click', closeTab);
 	document.addEventListener('keydown', closeTabKeydown);
 }
 
 //закрыть попап
 function closePopup(popup) {
 	popup.classList.remove("popup_opened");
-	popup.removeEventListener('click', closeTabOverlay);
+	popup.removeEventListener('click', closeTab);
 	document.removeEventListener('keydown', closeTabKeydown);
 }
 
@@ -157,6 +147,8 @@ function handleOpenPopup(text, image) {
 	openPopup(popupImage);
 }
 
+formValidatorEdit.enableValidation();
+formValidatorAdd.enableValidation();
 blockFormEdit.addEventListener("submit", editProfile);
 blockFormAdd.addEventListener("submit", submitCard);
 
