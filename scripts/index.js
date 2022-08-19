@@ -73,10 +73,11 @@ const buttonElement = document.querySelector('.popup__save-button_add');
 const formValidatorEdit = new FormValidator(settings, popupEdit);
 const formValidatorAdd = new FormValidator(settings, popupAdd);
 
-initialCards.forEach((item) => {
+const initialCardsReverse = initialCards.reverse();
+initialCardsReverse.forEach((item) => {
 	const card = new Card(item, settings, '.card-template_type_default', handleOpenPopup);
 	const cardElement = card.generateCard();
-	document.querySelector('.cards').append(cardElement);
+	addCard(cardElement);
 });
 
 function submitCard(evt) {
