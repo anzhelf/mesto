@@ -34,7 +34,7 @@ const settings = {
 	cardLike: '.card__like',
 	cardDelete: '.card__delete',
 	cardTitle: '.card__title',
-	
+
 	form: '.popup__form',
 	input: '.popup__input',
 	buttonInactive: 'popup__save-button_inactive',
@@ -73,8 +73,7 @@ const buttonElement = document.querySelector('.popup__save-button_add');
 const formValidatorEdit = new FormValidator(settings, popupEdit);
 const formValidatorAdd = new FormValidator(settings, popupAdd);
 
-const initialCardsReverse = initialCards.reverse();
-initialCardsReverse.forEach((item) => {
+initialCards.reverse().forEach((item) => {
 	const card = new Card(item, settings, '.card-template_type_default', handleOpenPopup);
 	const cardElement = card.generateCard();
 	addCard(cardElement);
@@ -152,4 +151,3 @@ formValidatorEdit.enableValidation();
 formValidatorAdd.enableValidation();
 blockFormEdit.addEventListener("submit", editProfile);
 blockFormAdd.addEventListener("submit", submitCard);
-
