@@ -21,24 +21,26 @@ export class Card {
 	//создаем карты
 	generateCard() {
 		this._element = this._getTemplate();
-		this._setEventListeners(); // добавим обработчики
-		this._element.querySelector(this._cardImage).src = this._image;
+		const cardImage = this._element.querySelector(this._cardImage);
+		this._setEventListeners(cardImage); // добавим обработчики
+		cardImage.src = this._image;
 		this._element.querySelector(this._cardTitle).textContent = this._text;
-		this._element.querySelector(this._cardImage).alt = this._text;
+		cardImage.alt = this._text;
 		return this._element;
 	}
 
-	_setEventListeners() {
-		this._element.querySelector(this._cardLike).addEventListener('click', () => this._handleLikeCard());
+	_setEventListeners(cardImage) {
+		const cardLike = this._element.querySelector(this._cardLike);
+		cardLike.addEventListener('click', () => this._handleLikeCard(cardLike));
 		this._element.querySelector(this._cardDelete).addEventListener('click', () => this._handleDeleteCard());
-		this._element.querySelector(this._cardImage).addEventListener('click', () => this._handleOpenPopup(this._text, this._image));
+		cardImage.addEventListener('click', () => this._handleOpenPopup(this._text, this._image));
 	}
 
-	_handleLikeCard() {
-		this._element.querySelector(this._cardLike).classList.toggle('card__like_active');
+	_handleLikeCard(cardLike) {
+		cardLike.classList.toggle('card__like_active');
 	}
 
 	_handleDeleteCard() {
-		this._element.querySelector(this._cardDelete).closest(this._card).remove();
+		this._element.remove();
 	}
 }

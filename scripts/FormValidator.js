@@ -9,14 +9,6 @@ export class FormValidator {
 		this._buttonInactive = data.buttonInactive;
 	}
 
-	//повесить слушатели всем формам
-	_setEventListenersForm(formElement) {
-		const formsList = Array.from(document.querySelectorAll(this._form));
-		formsList.forEach((formElement) => {
-			this._setEventListeners(formElement);
-		});
-	}
-
 	//устанавить все обработчики
 	_setEventListeners(formElement) {
 		const inputList = Array.from(formElement.querySelectorAll(this._input));
@@ -77,8 +69,11 @@ export class FormValidator {
 	}
 
 	//вкл валидацию
-	enableValidation() {
+	enableValidation(formElement) {
 		const form = this._popup.querySelector(this._form);
-		this._setEventListenersForm(form);
+		const formsList = Array.from(document.querySelectorAll(this._form));
+		formsList.forEach((formElement) => {
+			this._setEventListeners(formElement);
+		});
 	}
 }

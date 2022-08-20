@@ -115,7 +115,7 @@ buttonAdd.addEventListener('click', function () {
 //закрыть по кнопке и оверлею
 function closeTab(evt) {
 	if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-icon')) {
-		closePopup(evt.target.closest('.popup'));
+		closePopup(evt.currentTarget);
 	}
 }
 
