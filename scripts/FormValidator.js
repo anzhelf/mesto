@@ -68,8 +68,8 @@ export class FormValidator {
 		}
 	}
 
-	//вкл валидацию
-	enableValidation(formElement) {
+	//вкл валидацию 
+	enableValidation() {
 		const form = this._popup.querySelector(this._form);
 		const formsList = Array.from(document.querySelectorAll(this._form));
 		formsList.forEach((formElement) => {
