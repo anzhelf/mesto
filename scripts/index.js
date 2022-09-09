@@ -2,6 +2,8 @@ import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import {Popup} from './Popup.js';
 import {Section} from './Section.js';
+import {PopupWithImage} from './PopupWithImage.js';
+//import {PopupWithForm} from './PopupWithForm.js';
 
 const initialCards = [
 	{
@@ -73,13 +75,15 @@ const formValidatorAdd = new FormValidator(settings, popupAdd);
 
 const popupOpenEdit = new Popup('.popup_profile_edit');
 const popupOpenAdd = new Popup('.popup_add_card');
-const popupOpenImage = new Popup('.popup_open_image');
+
+const popupOpenImage = new PopupWithImage('.popup_open_image');
+//const popupOpenForm = new PopupWithForm ('.popup_open_image');
 
 //добавить 6 карт на стр
 	const defaultCardList = new Section ({
 		items: initialCards.reverse(),
 		renderer: (item) => {
-			const card = new Card(item, settings, '.card-template_type_default', handleOpenPopup);
+			const card = new Card(item, settings, '.card-template_type_default', handleCardClick);
 			const cardElement = card.generateCard();
 			defaultCardList.addItem(cardElement);
 		} }, '.cards');
@@ -88,7 +92,7 @@ const popupOpenImage = new Popup('.popup_open_image');
 //сабмит карты
 function submitCard(evt) {
 	evt.preventDefault();
-	const card = new Card({ text: nameCardInput.value, image: cardImageInput.value }, settings, '.card-template_type_default', handleOpenPopup);
+	const card = new Card({ text: nameCardInput.value, image: cardImageInput.value }, settings, '.card-template_type_default', handleCardClick);
 	const cardElement = card.generateCard();
 	defaultCardList.addItem(cardElement);
 	popupOpenAdd.close();
@@ -115,11 +119,8 @@ buttonAdd.addEventListener('click', function () {
 	buttonElement.setAttribute('disabled', 'disabled');
 });
 
-function handleOpenPopup(text, image) {
-	popupCardImage.src = image;
-	popupCardImage.alt = text;
-	popupCardText.textContent = text;
-	popupOpenImage.open();
+function handleCardClick(text, image) {
+	popupOpenImage.open(image, text);
 }
 
 formValidatorEdit.enableValidation();

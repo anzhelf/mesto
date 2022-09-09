@@ -1,5 +1,5 @@
 export class Card {
-	constructor(data, settings, templateSelector, handleOpenPopup) {
+	constructor(data, settings, templateSelector, handleCardClick) {
 		this._image = data.image;
 		this._text = data.text;
     this._card = settings.card;
@@ -7,9 +7,8 @@ export class Card {
 		this._cardLike = settings.cardLike;
 		this._cardDelete = settings.cardDelete;
 		this._cardTitle = settings.cardTitle;
-	
 		this._templateSelector = templateSelector;
-		this._handleOpenPopup = handleOpenPopup;
+		this._handleCardClick = handleCardClick;
 	}
 
 	//достаем разметку
@@ -33,7 +32,7 @@ export class Card {
 		const cardLike = this._element.querySelector(this._cardLike);
 		cardLike.addEventListener('click', () => this._handleLikeCard(cardLike));
 		this._element.querySelector(this._cardDelete).addEventListener('click', () => this._handleDeleteCard());
-		this._cardImage.addEventListener('click', () => this._handleOpenPopup(this._text, this._image));
+		this._cardImage.addEventListener('click', () => this._handleCardClick(this._text, this._image));
 	}
 
 	_handleLikeCard(cardLike) {
