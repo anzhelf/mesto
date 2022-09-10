@@ -1,16 +1,16 @@
 export class Popup {
-	constructor(popupSelector){
-    this._popupSelector = popupSelector;
+	constructor(popupSelector) {
+		this._popupSelector = popupSelector;
 		this.popup = document.querySelector(this._popupSelector);
 	}
 
-	popup () {
+	popup() {
 		return this.popup;
 	}
 
 	open() {
-    this.popup.classList.add("popup_opened");
-	  this.setEventListeners();
+		this.popup.classList.add("popup_opened");
+		this.setEventListeners();
 	}
 
 	close() {
@@ -18,7 +18,7 @@ export class Popup {
 		this.removeEventListeners();
 	}
 
-//содержит логику закрытия попапа клавишей Esc.
+	//содержит логику закрытия попапа клавишей Esc.
 	_handleEscClose(evt) {
 		if (evt.key === "Escape") {
 			this.close();
@@ -27,15 +27,15 @@ export class Popup {
 
 	//закрыть по кнопке и оверлею
 	_handleButtonOverlayClose(evt) {
-	if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-icon')) {
-		this.close();
+		if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-icon')) {
+			this.close();
+		}
 	}
-}
 
-//добавляют и удаляютслушатели клика иконке и кнопке закрытия попапа
+	//добавляют и удаляютслушатели клика иконке и кнопке закрытия попапа
 	setEventListeners() {
-	  this.popup.addEventListener('click', this._handleButtonOverlayClose.bind(this));
-	  document.addEventListener('keydown', this._handleEscClose.bind(this));
+		this.popup.addEventListener('click', this._handleButtonOverlayClose.bind(this));
+		document.addEventListener('keydown', this._handleEscClose.bind(this));
 	}
 	removeEventListeners() {
 		this.popup.removeEventListener('click', this._handleButtonOverlayClose);

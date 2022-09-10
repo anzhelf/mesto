@@ -1,9 +1,9 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
-import {Popup} from './Popup.js';
-import {Section} from './Section.js';
-import {PopupWithImage} from './PopupWithImage.js';
-//import {PopupWithForm} from './PopupWithForm.js';
+import { Popup } from './Popup.js';
+import { Section } from './Section.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from "./UserInfo.js";
 
 const initialCards = [
@@ -78,19 +78,21 @@ const popupOpenEdit = new Popup('.popup_profile_edit');
 const popupOpenAdd = new Popup('.popup_add_card');
 
 const popupOpenImage = new PopupWithImage('.popup_open_image');
-//const popupOpenForm = new PopupWithForm ('.popup_profile_edit', submitForm);
+const popupFormAdd = new PopupWithForm('.popup_add_card', submitCard);
+const popupFormEdit = new PopupWithForm('.popup_profile_edit', editProfile);
 
 const userInfo = new UserInfo(nameProfile, job);
 
 //добавить 6 карт на стр
-	const defaultCardList = new Section ({
-		items: initialCards.reverse(),
-		renderer: (item) => {
-			const card = new Card(item, settings, '.card-template_type_default', handleCardClick);
-			const cardElement = card.generateCard();
-			defaultCardList.addItem(cardElement);
-		} }, '.cards');
-	defaultCardList.renderItems();
+const defaultCardList = new Section({
+	items: initialCards.reverse(),
+	renderer: (item) => {
+		const card = new Card(item, settings, '.card-template_type_default', handleCardClick);
+		const cardElement = card.generateCard();
+		defaultCardList.addItem(cardElement);
+	}
+}, '.cards');
+defaultCardList.renderItems();
 
 //сабмит карты
 function submitCard(evt) {
@@ -98,7 +100,7 @@ function submitCard(evt) {
 	const card = new Card({ text: nameCardInput.value, image: cardImageInput.value }, settings, '.card-template_type_default', handleCardClick);
 	const cardElement = card.generateCard();
 	defaultCardList.addItem(cardElement);
-	popupOpenAdd.close();
+	popupFormAdd.close();
 }
 
 //самбит редактирования профиля
@@ -108,7 +110,7 @@ function editProfile(evt) {
 		userName: nameInput.value,
 		userJob: jobInput.value
 	});
-	popupOpenEdit.close();
+	popupFormEdit.close();
 }
 
 buttonEdit.addEventListener('click', () => {
@@ -119,7 +121,7 @@ buttonEdit.addEventListener('click', () => {
 });
 
 buttonAdd.addEventListener('click', function () {
-	blockFormAdd.reset();
+	//blockFormAdd.reset();
 	popupOpenAdd.open();
 	buttonElement.classList.add(settings.buttonInactive);
 	buttonElement.setAttribute('disabled', 'disabled');

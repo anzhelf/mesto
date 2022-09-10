@@ -1,30 +1,27 @@
-import {Popup} from "./Popup.js";
+import { Popup } from "./Popup.js";
 
 //колбэк сабмита формы
 export class PopupWithForm extends Popup {
-	constructor(popupSelector, submitForm){
-    super(popupSelector);
+	constructor(popupSelector, submitForm) {
+		super(popupSelector);
 		this._submitForm = submitForm;
+		this._popup = super.popup();
+		this.blockForm = this._popup.querySelector(".popup__form");
 	}
 
 	close() {
-		
-	}
-	//собирает данные всех полей формы
-	_getInputValues() {
-
+		super.close();
+		this.blockForm.reset();
 	}
 
-	//должен не только добавлять обработчик 
-	//клика иконке закрытия, но и добавлять обработчик сабмита формы.
+	//добавлять обработчик иконке и сабмиту формы.
 	setEventListeners() {
-    super.setEventListeners();
-		//blockFormEdit.addEventListener("submit", editProfile);
-		super.popup.addEventListener("submit", this.submitForm);
+		super.setEventListeners();
+		this._popup.addEventListener("submit", this.submitForm);
 	}
 
 	removeEventListeners() {
 		super.removeEventListeners();
-		super.popup.removeEventListener("submit", this.submitForm);
+		this._popup.removeEventListener("submit", this.submitForm);
 	}
 }
