@@ -4,6 +4,7 @@ import {Popup} from './Popup.js';
 import {Section} from './Section.js';
 import {PopupWithImage} from './PopupWithImage.js';
 //import {PopupWithForm} from './PopupWithForm.js';
+import { UserInfo } from "./UserInfo.js";
 
 const initialCards = [
 	{
@@ -77,7 +78,9 @@ const popupOpenEdit = new Popup('.popup_profile_edit');
 const popupOpenAdd = new Popup('.popup_add_card');
 
 const popupOpenImage = new PopupWithImage('.popup_open_image');
-//const popupOpenForm = new PopupWithForm ('.popup_open_image');
+//const popupOpenForm = new PopupWithForm ('.popup_profile_edit', submitForm);
+
+const userInfo = new UserInfo(nameProfile, job);
 
 //добавить 6 карт на стр
 	const defaultCardList = new Section ({
@@ -101,14 +104,17 @@ function submitCard(evt) {
 //самбит редактирования профиля
 function editProfile(evt) {
 	evt.preventDefault();
-	nameProfile.textContent = nameInput.value;
-	job.textContent = jobInput.value;
+	userInfo.setUserInfo({
+		userName: nameInput.value,
+		userJob: jobInput.value
+	});
 	popupOpenEdit.close();
 }
 
-buttonEdit.addEventListener('click', function () {
-	nameInput.value = nameProfile.textContent;
-	jobInput.value = job.textContent;
+buttonEdit.addEventListener('click', () => {
+	const data = userInfo.getUserInfo();
+	nameInput.value = data.userName;
+	jobInput.value = data.userJob;
 	popupOpenEdit.open();
 });
 
