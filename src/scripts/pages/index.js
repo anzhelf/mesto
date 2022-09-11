@@ -1,3 +1,4 @@
+import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, popupEdit, popupAdd, nameProfile, job,
 	nameInput, jobInput, nameCardInput, cardImageInput, buttonElement
