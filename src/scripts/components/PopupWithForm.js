@@ -6,11 +6,7 @@ export class PopupWithForm extends Popup {
 		this._submitForm = submitForm;
 		this.blockForm = this.popup.querySelector(".popup__form");
 	}
-
-	open() {
-		super.open();
-	}
-
+	
 	close() {
 		super.close();
 		this.blockForm.reset();
