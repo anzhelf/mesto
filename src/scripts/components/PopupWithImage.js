@@ -3,9 +3,8 @@ import { Popup } from "./Popup.js";
 export class PopupWithImage extends Popup {
 	constructor(popupSelector) {
 		super(popupSelector);
-		this._popupImage = super.popup();
-		this._popupCardImage = this._popupImage.querySelector('.popup__card-image');
-		this._popupCardText = this._popupImage.querySelector('.popup__card-title');
+		this._popupCardImage = this.popup.querySelector('.popup__card-image');
+		this._popupCardText = this.popup.querySelector('.popup__card-title');
 	}
 	//вставлять в попап картинку c данными нажатой карточки
 	open(image, text) {

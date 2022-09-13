@@ -4,8 +4,7 @@ export class PopupWithForm extends Popup {
 	constructor(popupSelector, submitForm) {
 		super(popupSelector);
 		this._submitForm = submitForm;
-		this._popup = super.popup();
-		this.blockForm = this._popup.querySelector(".popup__form");
+		this.blockForm = this.popup.querySelector(".popup__form");
 	}
 
 	open() {
@@ -20,11 +19,11 @@ export class PopupWithForm extends Popup {
 	//добавлять обработчик иконке и сабмиту формы.
 	setEventListeners() {
 		super.setEventListeners();
-		this._popup.addEventListener("submit", this._submitForm);
+		this.popup.addEventListener("submit", this._submitForm);
 	}
 
 	removeEventListeners() {
 		super.removeEventListeners();
-		this._popup.removeEventListener("submit", this._submitForm);
+		this.popup.removeEventListener("submit", this._submitForm);
 	}
 }

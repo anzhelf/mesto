@@ -1,11 +1,9 @@
 export class Popup {
 	constructor(popupSelector) {
-		this._popupSelector = popupSelector;
-		this.popup = document.querySelector(this._popupSelector);
-	}
-
-	popup() {
-		return this.popup;
+		this.popupSelector = popupSelector;
+		this.popup = document.querySelector(this.popupSelector);
+		this._handleButtonOverlayClose = this._handleButtonOverlayClose.bind(this);
+		this._handleEscClose = this._handleEscClose.bind(this);
 	}
 
 	open() {
@@ -34,8 +32,8 @@ export class Popup {
 
 	//добавляют и удаляютслушатели клика иконке и кнопке закрытия попапа
 	setEventListeners() {
-		this.popup.addEventListener('click', this._handleButtonOverlayClose.bind(this));
-		document.addEventListener('keydown', this._handleEscClose.bind(this));
+		this.popup.addEventListener('click', this._handleButtonOverlayClose);
+		document.addEventListener('keydown', this._handleEscClose);
 	}
 	removeEventListeners() {
 		this.popup.removeEventListener('click', this._handleButtonOverlayClose);
