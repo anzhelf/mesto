@@ -56,12 +56,14 @@ buttonEdit.addEventListener('click', () => {
 	const userData = userInfo.getUserInfo();
 	nameInput.value = userData.userName;
 	jobInput.value = userData.userJob;
+	//formValidatorEdit.hideInputError();
 	popupFormEdit.open();
 });
 
 buttonAdd.addEventListener('click', function () {
 	popupFormAdd.open();
 	formValidatorAdd.disableSubmitButton();
+	//formValidatorAdd.hideInputError();
 });
 
 function handleCardClick(text, image) {
