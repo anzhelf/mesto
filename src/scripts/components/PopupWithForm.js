@@ -5,8 +5,18 @@ export class PopupWithForm extends Popup {
 		super(popupSelector);
 		this._submitForm = submitForm;
 		this.blockForm = this.popup.querySelector(".popup__form");
+		this._nameInput = this.blockForm.querySelector(".popup__input_type_name");
+    this._jobInput = this.blockForm.querySelector(".popup__input_type_job");
 	}
-	
+	//собирает данные с полей ввода формы и возвращат их в виде объекта
+	getInputValues() {
+		return {
+			userName: this._nameInput.value,
+			userJob: this._jobInput.value
+		}
+
+	}
+
 	close() {
 		super.close();
 		this.blockForm.reset();

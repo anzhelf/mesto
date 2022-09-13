@@ -39,6 +39,7 @@ defaultCardList.renderItems();
 //сабмит карты
 function submitCard(evt) {
 	evt.preventDefault();
+	const dataAdd = popupFormEdit.getInputValues();
 	createCard ({ text: nameCardInput.value, image: cardImageInput.value });
 	popupFormAdd.close();
 }
@@ -46,10 +47,8 @@ function submitCard(evt) {
 //самбит редактирования профиля
 function editProfile(evt) {
 	evt.preventDefault();
-	userInfo.setUserInfo({
-		userName: nameInput.value,
-		userJob: jobInput.value
-	});
+	const dataEdit = popupFormEdit.getInputValues();
+	userInfo.setUserInfo(dataEdit);
 	popupFormEdit.close();
 }
 

@@ -12,8 +12,8 @@ export class UserInfo {
 		}
 	}
 	//принимает новые данные пользователя и добавляет их на страницу
-	setUserInfo({ userName, userJob }) {
-		this._userName.textContent = userName;
-		this._userJob.textContent = userJob;
+	setUserInfo(data) {
+		this._userName.textContent = data.userName;
+		this._userJob.textContent = data.userJob;
 	}
 }
