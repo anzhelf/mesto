@@ -1,4 +1,4 @@
-import '../../style/index.css';
+//import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, popupEdit, popupAdd, nameProfile, job,
 	nameInput, jobInput, nameCardInput, cardImageInput, buttonElement,
@@ -23,7 +23,11 @@ const userInfo = new UserInfo(nameProfile, job);
 
 function createCard(data) {
 	const card = new Card(data, settings, '.card-template_type_default', handleCardClick);
-	const cardElement = card.generateCard();
+	return card.generateCard();
+}
+
+function addCard(data) {
+	const cardElement = createCard(data);
 	defaultCardList.addItem(cardElement);
 }
 
@@ -31,7 +35,7 @@ function createCard(data) {
 const defaultCardList = new Section({
 	items: initialCards.reverse(),
 	renderer: (item) => {
-		createCard(item);
+		addCard(item);
 	}
 }, '.cards');
 defaultCardList.renderItems();
@@ -40,7 +44,7 @@ defaultCardList.renderItems();
 function submitCard(evt) {
 	evt.preventDefault();
 	const dataAdd = popupFormEdit.getInputValues();
-	createCard({ text: nameCardInput.value, image: cardImageInput.value });
+	addCard({ text: nameCardInput.value, image: cardImageInput.value });
 	popupFormAdd.close();
 }
 
