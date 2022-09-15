@@ -41,18 +41,14 @@ const defaultCardList = new Section({
 defaultCardList.renderItems();
 
 //сабмит карты
-function submitCard(evt) {
-	evt.preventDefault();
-	const dataAdd = popupFormEdit.getInputValues();
-	addCard({ text: nameCardInput.value, image: cardImageInput.value });
+function submitCard(data) {
+	addCard(data);
 	popupFormAdd.close();
 }
 
 //самбит редактирования профиля
-function editProfile(evt) {
-	evt.preventDefault();
-	const dataEdit = popupFormEdit.getInputValues();
-	userInfo.setUserInfo(dataEdit);
+function editProfile(data) {
+	userInfo.setUserInfo(data);
 	popupFormEdit.close();
 }
 

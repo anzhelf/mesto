@@ -41,12 +41,12 @@
 				<form class="popup__form popup__form_Edit" name="edit" novalidate>
 
 					<label class="popup__label">
-					  <input type="text" id="username" minlength="2" maxlength="40" value="Жак-Ив Кусто" placeholder="Имя" class="popup__input popup__input_type_name" required>
+					  <input name="userName" type="text" id="username" minlength="2" maxlength="40" value="Жак-Ив Кусто" placeholder="Имя" class="popup__input popup__input_type_name" required>
 						<span class="username-input-error popup__input-error-name"></span>
 					</label>
 
 					<label class="popup__label popup__label_last-element">
-					  <input type="text" id="biography" minlength="2" maxlength="200" value="Исследователь океана" placeholder="Работа" class="popup__input popup__input_type_job" required>
+					  <input name="userJob" type="text" id="biography" minlength="2" maxlength="200" value="Исследователь океана" placeholder="Работа" class="popup__input popup__input_type_job" required>
 						<span class="biography-input-error popup__input-error-job"></span>
 					</label>
 					  
@@ -63,12 +63,12 @@
 				<h3 class="popup__title">Новое место</h3>
 				<form class="popup__form popup__form_Add" name="add" novalidate>
 					<label class="popup__label">
-					  <input type="text" id="namecard" minlength="2" maxlength="30" placeholder="Название" class="popup__input popup__input_type_name" required>
+					  <input name='text' type="text" id="namecard" minlength="2" maxlength="30" placeholder="Название" class="popup__input popup__input_type_name" required>
 				    <span class="namecard-input-error popup__input-error-name"></span>
 					</label>
 
 					<label class="popup__label popup__label_last-element">
-					  <input type="url" id="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_job" required>
+					  <input name='image' type="url" id="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_job" required>
 					  <span class="link-input-error popup__input-error-job"></span>
           </label>
 
