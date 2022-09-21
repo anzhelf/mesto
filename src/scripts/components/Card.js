@@ -30,13 +30,24 @@ export class Card {
 
 	_setEventListeners() {
 		const cardLike = this._element.querySelector(this._cardLike);
-		cardLike.addEventListener('click', () => this._handleLikeCard(cardLike));
+		const num = this._element.querySelector('.card__like-num');
+		cardLike.addEventListener('click', () => this._handleLikeCard(cardLike, num));
 		this._element.querySelector(this._cardDelete).addEventListener('click', () => this._handleDeleteCard());
 		this._cardImage.addEventListener('click', () => this._handleCardClick(this._text, this._image));
 	}
 
-	_handleLikeCard(cardLike) {
-		cardLike.classList.toggle('card__like_active');
+	_handleLikeCard(cardLike, num) {
+		cardLike.classList.toggle('card__like-icon_active');
+	  this._handleLikeCardNum(cardLike, num);
+	}
+
+	_handleLikeCardNum(cardLike, num) {
+		if (cardLike.classList.contains('card__like-icon_active')) {
+			num.textContent = Number(num.textContent) + 1;
+		}
+		else {
+			num.textContent = Number(num.textContent) - 1;
+		}
 	}
 
 	_handleDeleteCard() {

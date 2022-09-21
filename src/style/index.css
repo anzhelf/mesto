@@ -23,7 +23,9 @@
 @import url(../blocks/card/__post/card__post.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like/card__like.css);
-@import url(../blocks/card/__like/_active/card__like_active.css);
+@import url(../blocks/card/__like-icon/card__like-icon.css);
+@import url(../blocks/card/__like-icon/__like-icon_active/card__like-icon_active.css);
+@import url(../blocks/card/__like-num/card__like-num.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);

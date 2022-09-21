@@ -1,15 +1,4 @@
 .card__like {
-  width: 22px;
-  height: 19px;
-  opacity: 1;
-  transition: opacity 0.2s linear 0.1s;
-  background: none;
-  background-image: url(../../../images/like.svg);
-  border: none;
-  padding: 0;
-}
-
-.card__like:hover {
-  opacity: 0.5;
-  cursor: pointer;
+	display: flex;
+	flex-direction: column;
 }

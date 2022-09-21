@@ -45,7 +45,7 @@ export const initialCards = [
 export const settings = {
 	card: '.card',
 	cardImage: '.card__image',
-	cardLike: '.card__like',
+	cardLike: '.card__like-icon',
 	cardDelete: '.card__delete',
 	cardTitle: '.card__title',
 

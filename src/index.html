@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mesto</title>
-	<!--<link rel="stylesheet" href="style/index.css"/>-->
+	<link rel="stylesheet" href="style/index.css"/>
 </head>
 
 <body class="page">
@@ -92,10 +92,13 @@
 			<img class="card__delete" src="images/delete.png" alt="Иконка урны, для удаления карточки">
 			<div class="card__post">
 				<h2 class="card__title"></h2>
-				<button class="card__like" aria-label="Кнопка лайк"></button>
+				<div class="card__like">
+				<button class="card__like-icon" aria-label="Кнопка лайк"></button>
+				<p class="card__like-num">0</p>
+			  </div>
 			</div>
 		</article>
 	</template>
-	<!--<script type="module" src="scripts/pages/index.js"></script>-->
+	<script type="module" src="scripts/pages/index.js"></script>
 </body>
 </html>
