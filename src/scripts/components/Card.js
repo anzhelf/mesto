@@ -1,3 +1,5 @@
+import { PopupWithForm } from "./PopupWithForm.js";
+
 export class Card {
 	constructor(data, settings, templateSelector, handleCardClick) {
 		this._image = data.image;
@@ -38,7 +40,7 @@ export class Card {
 
 	_handleLikeCard(cardLike, num) {
 		cardLike.classList.toggle('card__like-icon_active');
-	  this._handleLikeCardNum(cardLike, num);
+		this._handleLikeCardNum(cardLike, num);
 	}
 
 	_handleLikeCardNum(cardLike, num) {
@@ -51,6 +53,10 @@ export class Card {
 	}
 
 	_handleDeleteCard() {
-		this._element.remove();
+		this._popupFormDelete = new PopupWithForm('.popup-delete', () => {
+			this._element.remove();
+			this._popupFormDelete.close();
+		});
+		this._popupFormDelete.open();
 	}
 }
