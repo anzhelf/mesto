@@ -2,8 +2,8 @@ import { PopupWithForm } from "./PopupWithForm.js";
 
 export class Card {
 	constructor(data, settings, templateSelector, handleCardClick) {
-		this._image = data.image;
-		this._text = data.text;
+		this._image = data.link;
+		this._text = data.name;
 		this._card = settings.card;
 		this._cardImg = settings.cardImage;
 		this._cardLike = settings.cardLike;

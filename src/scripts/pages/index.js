@@ -1,9 +1,11 @@
-import '../../style/index.css';
+//import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, popupEdit, popupAdd, nameProfile, job,
 	nameInput, jobInput, nameCardInput, cardImageInput, buttonElement,
 	initialCards, settings, buttonAvatar, popupAvatar, avatar
 } from "../utils/constants.js";
+
+import { Api } from '../api.js';
 
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
@@ -12,6 +14,28 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from "../components/UserInfo.js";
 
+const api = new Api({
+	url: 'https://mesto.nomoreparties.co/v1/cohort-50/cards',
+	headers: {
+		'content-type': 'aplication/json',
+		authorization: '653fc287-1617-4fdf-ab2c-e8fd91183c7f'
+	}
+})
+
+api.getAllTasks();
+/*
+fetch('https://mesto.nomoreparties.co/v1/cohort-50/cards', {
+  headers: {
+    authorization: '653fc287-1617-4fdf-ab2c-e8fd91183c7f'
+  }
+})
+.then((res)=>{
+  console.log(res)
+})
+.catch((err)=>{
+	console.log(err);
+});
+*/
 const formValidatorEdit = new FormValidator(settings, popupEdit);
 const formValidatorAdd = new FormValidator(settings, popupAdd);
 const formValidatorAvatar = new FormValidator(settings, popupAvatar);
@@ -75,8 +99,8 @@ buttonAdd.addEventListener('click', function () {
 	formValidatorAdd.hideInputError();
 });
 
-function handleCardClick(text, image) {
-	popupOpenImage.open(image, text);
+function handleCardClick(name, link) {
+	popupOpenImage.open(link, name);
 }
 
 buttonAvatar.addEventListener('click', function () {
