@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mesto</title>
-	<link rel="stylesheet" href="style/index.css"/>
+	<!--<link rel="stylesheet" href="style/index.css"/>-->
 </head>
 
 <body class="page">
@@ -15,12 +15,19 @@
 
   <main class="content">
     <section class="profile">
-      <img class="profile__photo" src="images/kusto__photo.jpg" alt="Фото профиля, путишественник Кусто в красной шапке">
+
+			<div class="profile__avatar-container">
+				<div class="profile__avatar-icon">
+					<img class="profile__avatar-edit" src="images/editAvatar.png" alt="Фото профиля, путишественник Кусто в красной шапке"></div>
+        <img class="profile__photo" src="images/kusto__photo.jpg" alt="Фото профиля, путишественник Кусто в красной шапке">
+		  </div>
+
       <div class="profile__text-box">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button class="profile__edit" aria-label="Кнопка редактировать информацию о себе"></button>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
+
       <button class="profile__button-add" aria-label="Кнопка добавить пост"></button>
     </section>
 
@@ -129,6 +136,6 @@
 			</div>
 		</article>
 	</template>
-	<script type="module" src="scripts/pages/index.js"></script>
+	<!--<script type="module" src="scripts/pages/index.js"></script>-->
 </body>
 </html>

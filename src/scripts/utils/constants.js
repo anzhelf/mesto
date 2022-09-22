@@ -15,7 +15,7 @@ export const cardImageInput = popupAdd.querySelector(".popup__input_type_job");
 
 export const buttonElement = document.querySelector('.popup__save-button_add');
 
-export const buttonAvatar = document.querySelector('.profile__photo');
+export const buttonAvatar = document.querySelector('.profile__avatar-container');
 export const popupAvatar = document.querySelector('.popup_avatar');
 export const avatar = document.querySelector('.profile__photo');
 
