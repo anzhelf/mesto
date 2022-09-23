@@ -15,27 +15,21 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from "../components/UserInfo.js";
 
 const api = new Api({
-	url: 'https://mesto.nomoreparties.co/v1/cohort-50/cards',
+	url: 'https://nomoreparties.co/v1/cohort-50/users/me ',
 	headers: {
 		'content-type': 'aplication/json',
 		authorization: '653fc287-1617-4fdf-ab2c-e8fd91183c7f'
 	}
-})
-
-api.getAllTasks();
-/*
-fetch('https://mesto.nomoreparties.co/v1/cohort-50/cards', {
-  headers: {
-    authorization: '653fc287-1617-4fdf-ab2c-e8fd91183c7f'
-  }
-})
-.then((res)=>{
-  console.log(res)
-})
-.catch((err)=>{
-	console.log(err);
 });
-*/
+
+const tasks = api.getAllTasks();
+tasks.then(data => {
+console.log(data);
+userInfo.setUserInfo(data);
+});
+
+
+
 const formValidatorEdit = new FormValidator(settings, popupEdit);
 const formValidatorAdd = new FormValidator(settings, popupAdd);
 const formValidatorAvatar = new FormValidator(settings, popupAvatar);

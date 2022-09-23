@@ -10,13 +10,6 @@ export class Api {
 		})
 		.then((res)=> {
       return res.json();
-		})
-		.then((res)=> {
-			//debugger;
-			console.log(res)
-		})
-		.catch((err)=>{
-			console.log(err);
 		});
 	}
 }
