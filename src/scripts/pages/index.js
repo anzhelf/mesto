@@ -6,7 +6,6 @@ import {
 } from "../utils/constants.js";
 
 import { Api } from '../api.js';
-
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
@@ -26,17 +25,13 @@ const api = new Api({
 
 const tasksUser = api.getDdataUser();
 tasksUser.then(data => {
-	//console.log('ответ', data);
 	userInfo.setUserInfo(data);
-	console.log(data._id);
 	userId = data._id;
 });
 
 const tasksCards = api.getInicialCards();
 tasksCards.then(data => {
-	//console.log('ответ-cards', data);
 	data.forEach(item => {
-		//console.log(item);
 		addCard(item);
 	});
 });
@@ -49,24 +44,38 @@ const popupOpenImage = new PopupWithImage('.popup_open_image');
 const popupFormAdd = new PopupWithForm('.popup_add_card', submitCard);
 const popupFormEdit = new PopupWithForm('.popup_profile_edit', editProfile);
 const popupFormAvatar = new PopupWithForm('.popup_avatar', editAvatar);
-
 const popupFormDelete = new PopupWithForm('.popup-delete');
 
 const userInfo = new UserInfo(nameProfile, job);
 
 function createCard(data) {
 	const card = new Card(data, settings, '.card-template_type_default', handleCardClick,
-	(id) => {
-		popupFormDelete.open();
-		popupFormDelete.changeSubmitHandler(() => {
-			api.deliteCard(id)
-			.then(res => {
-				popupFormDelete.close();
-				console.log(res);
-				card.deleteCard();
+		(id) => {
+			popupFormDelete.open();
+			popupFormDelete.changeSubmitHandler(() => {
+				api.deliteCard(id)
+					.then(res => {
+						popupFormDelete.close();
+						card.deleteCard();
+					});
 			});
+		},
+
+		(id) => {
+			if (card.isLikes()) {
+				api.deleteLikeCard(id)
+					.then((res) => {
+						card.setLikes(res.likes);
+					});
+			}
+			else {
+				api.likeCard(id)
+					.then((res) => {
+						card.setLikes(res.likes);
+					});
+			}
+
 		});
-	});
 	return card.generateCard();
 }
 
@@ -75,7 +84,6 @@ function handleCardClick(name, link) {
 }
 
 function addCard(data) {
-	//console.log(data);
 	const cardElement = createCard(data);
 	defaultCardList.addItem(cardElement);
 }

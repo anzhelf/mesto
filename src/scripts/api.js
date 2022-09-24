@@ -13,6 +13,18 @@ export class Api {
     .catch(console.log);
 	}
 
+	editAvatarUser(avatar) {
+		return fetch(`${this._url}/users/me/avatar`, {
+			method: 'PATCH',
+			headers: this._headers,
+			body: JSON.stringify({
+				avatar
+			})
+		})
+		.then(res => res.ok ? res.json() : Promise.reject(res.status))
+    .catch(console.log);
+	}
+
 	editDdataUser(name, about) {
 		return fetch(`${this._url}/users/me`, {
 			method: 'PATCH',
@@ -48,18 +60,18 @@ export class Api {
     .catch(console.log);
 	}
 
-	likeCard(_id){
-		return fetch(`${this._url}cards/${_id}/likes`, {
-			method: 'PUT',
+	deleteLikeCard(_id){
+		return fetch(`${this._url}/cards/${_id}/likes`, {
+			method: 'DELETE',
 			headers: this._headers,
 		})
 		.then(res => res.ok ? res.json() : Promise.reject(res.status))
     .catch(console.log);
 	}
 
-	deleteLikeCard(_id){
-		return fetch(`${this._url}cards/${_id}/likes`, {
-			method: 'DELETE',
+	likeCard(_id){
+		return fetch(`${this._url}/cards/${_id}/likes`, {
+			method: 'PUT',
 			headers: this._headers,
 		})
 		.then(res => res.ok ? res.json() : Promise.reject(res.status))
