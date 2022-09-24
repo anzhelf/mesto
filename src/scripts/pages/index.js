@@ -1,11 +1,11 @@
-//import '../../style/index.css';
+import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, popupEdit, popupAdd, nameProfile, job,
 	nameInput, jobInput, nameCardInput, cardImageInput, buttonElement,
 	initialCards, settings, buttonAvatar, popupAvatar, avatar
 } from "../utils/constants.js";
 
-import { Api } from '../api.js';
+import { Api } from '../components/api.js';
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
