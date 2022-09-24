@@ -13,6 +13,18 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from "../components/UserInfo.js";
 
+const formValidatorEdit = new FormValidator(settings, popupEdit);
+const formValidatorAdd = new FormValidator(settings, popupAdd);
+const formValidatorAvatar = new FormValidator(settings, popupAvatar);
+
+const popupOpenImage = new PopupWithImage('.popup_open_image');
+const popupFormAdd = new PopupWithForm('.popup_add_card', submitCard);
+const popupFormEdit = new PopupWithForm('.popup_profile_edit', editProfile);
+const popupFormAvatar = new PopupWithForm('.popup_avatar', editAvatar);
+const popupFormDelete = new PopupWithForm('.popup-delete');
+
+const userInfo = new UserInfo(nameProfile, job, avatar);
+
 export let userId;
 
 const api = new Api({
@@ -36,25 +48,13 @@ tasksCards.then(data => {
 	});
 });
 
-const formValidatorEdit = new FormValidator(settings, popupEdit);
-const formValidatorAdd = new FormValidator(settings, popupAdd);
-const formValidatorAvatar = new FormValidator(settings, popupAvatar);
-
-const popupOpenImage = new PopupWithImage('.popup_open_image');
-const popupFormAdd = new PopupWithForm('.popup_add_card', submitCard);
-const popupFormEdit = new PopupWithForm('.popup_profile_edit', editProfile);
-const popupFormAvatar = new PopupWithForm('.popup_avatar', editAvatar);
-const popupFormDelete = new PopupWithForm('.popup-delete');
-
-const userInfo = new UserInfo(nameProfile, job);
-
 function createCard(data) {
 	const card = new Card(data, settings, '.card-template_type_default', handleCardClick,
 		(id) => {
 			popupFormDelete.open();
 			popupFormDelete.changeSubmitHandler(() => {
 				api.deliteCard(id)
-					.then(res => {
+					.then(() => {
 						popupFormDelete.close();
 						card.deleteCard();
 					});
@@ -98,26 +98,40 @@ const defaultCardList = new Section({
 
 //сабмит карты
 function submitCard(data) {
+	popupFormAdd.renderLoading(true);
 	api.addNewCard(data.name, data.link)
 		.then(res => {
 			addCard(res);
 			popupFormAdd.close();
+		})
+		.finally(() => {
+			popupFormAdd.renderLoading(false);
 		});
 }
 
 //самбит редактирования профиля
 function editProfile(data) {
+	popupFormEdit.renderLoading(true);
 	api.editDdataUser(data.name, data.about)
 		.then(res => {
 			userInfo.setUserInfo(res);
 			popupFormEdit.close();
+		})
+		.finally(() => {
+			popupFormEdit.renderLoading(false);
 		});
 }
 
 //самбит редактирования avatar
 function editAvatar(data) {
-	avatar.src = data.image;
-	popupFormAvatar.close();
+	popupFormAvatar.renderLoading(true);
+	api.editAvatarUser(data.avatar)
+		.then(res => {
+			userInfo.setUserInfo(res);
+			popupFormAvatar.close();
+		}).finally(() => {
+			popupFormAvatar.renderLoading(false);
+		});
 }
 
 buttonEdit.addEventListener('click', () => {

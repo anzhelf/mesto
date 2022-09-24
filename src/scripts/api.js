@@ -1,6 +1,6 @@
 export class Api {
-	constructor(config){
-    this._url =config.url;
+	constructor(config) {
+		this._url = config.url;
 		this._headers = config.headers;
 	}
 
@@ -9,8 +9,8 @@ export class Api {
 			method: 'GET',
 			headers: this._headers
 		})
-		.then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+			.catch(console.log);
 	}
 
 	editAvatarUser(avatar) {
@@ -21,8 +21,8 @@ export class Api {
 				avatar
 			})
 		})
-		.then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+			.catch(console.log);
 	}
 
 	editDdataUser(name, about) {
@@ -34,17 +34,17 @@ export class Api {
 				about
 			})
 		})
-		.then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+			.catch(console.log);
 	}
 
-	getInicialCards(){
+	getInicialCards() {
 		return fetch(`${this._url}/cards `, {
 			method: 'GET',
 			headers: this._headers
 		})
-		.then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+			.catch(console.log);
 	}
 
 	addNewCard(name, link) {
@@ -56,34 +56,34 @@ export class Api {
 				link
 			})
 		})
-		.then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+			.catch(console.log);
 	}
 
-	deleteLikeCard(_id){
+	deleteLikeCard(_id) {
 		return fetch(`${this._url}/cards/${_id}/likes`, {
 			method: 'DELETE',
 			headers: this._headers,
 		})
-		.then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+			.catch(console.log);
 	}
 
-	likeCard(_id){
+	likeCard(_id) {
 		return fetch(`${this._url}/cards/${_id}/likes`, {
 			method: 'PUT',
 			headers: this._headers,
 		})
-		.then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+			.catch(console.log);
 	}
 
-	deliteCard(_id){
+	deliteCard(_id) {
 		return fetch(`${this._url}/cards/${_id}`, {
 			method: 'DELETE',
 			headers: this._headers,
 		})
-		.then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+			.catch(console.log);
 	}
 }
