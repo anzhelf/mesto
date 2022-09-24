@@ -13,7 +13,8 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from "../components/UserInfo.js";
-//import { electron } from "webpack";
+
+export let userId;
 
 const api = new Api({
 	url: 'https://mesto.nomoreparties.co/v1/cohort-50',
@@ -27,6 +28,8 @@ const tasksUser = api.getDdataUser();
 tasksUser.then(data => {
 	//console.log('ответ', data);
 	userInfo.setUserInfo(data);
+	console.log(data._id);
+	userId = data._id;
 });
 
 const tasksCards = api.getInicialCards();
@@ -54,16 +57,13 @@ const userInfo = new UserInfo(nameProfile, job);
 function createCard(data) {
 	const card = new Card(data, settings, '.card-template_type_default', handleCardClick,
 	(id) => {
-		console.log(data);
 		popupFormDelete.open();
 		popupFormDelete.changeSubmitHandler(() => {
-			console.log(id);
 			api.deliteCard(id)
 			.then(res => {
 				popupFormDelete.close();
 				console.log(res);
 				card.deleteCard();
-
 			});
 		});
 	});
@@ -75,19 +75,18 @@ function handleCardClick(name, link) {
 }
 
 function addCard(data) {
-	console.log(data);
+	//console.log(data);
 	const cardElement = createCard(data);
 	defaultCardList.addItem(cardElement);
 }
 
-//добавить 6 карт на стр
+//добавить карты на стр
 const defaultCardList = new Section({
 	items: initialCards.reverse(),
 	renderer: (item) => {
 		addCard(item);
 	}
 }, '.cards');
-//defaultCardList.renderItems();
 
 //сабмит карты
 function submitCard(data) {

@@ -1,11 +1,13 @@
-import { PopupWithForm } from "./PopupWithForm.js";
-
+import { userId } from "../pages/index.js";
 export class Card {
 	constructor(data, settings, templateSelector, handleCardClick, handleDeleteClik) {
 		this._image = data.link;
 		this._text = data.name;
 		this._likes = data.likes;
 		this._id = data._id;
+		this._owner = data.owner;
+		this._ovnerId = data.owner._id;
+    this._data = data;
 
 		this._card = settings.card;
 		this._cardImg = settings.cardImage;
@@ -33,6 +35,10 @@ export class Card {
 		this._cardImage.alt = this._text;
 		this._num = this._element.querySelector('.card__like-num');
 		this._num.textContent = this._likes.length;
+		if(this._ovnerId !== userId){
+			const del = this._element.querySelector(this._cardDelete);
+			del.remove();
+		}
 		return this._element;
 	}
 
@@ -47,6 +53,7 @@ export class Card {
 		cardLike.classList.toggle('card__like-icon_active');
 		this._handleLikeCardNum(cardLike, num);
 		console.log(this._likes);
+		console.log(this._ovnerId, this._id);
 	}
 
 	_handleLikeCardNum(cardLike, num) {
