@@ -1,6 +1,5 @@
-import { userId } from "../pages/index.js";
 export class Card {
-	constructor(data, settings, templateSelector, handleCardClick, handleDeleteClik, handlelikeClik) {
+	constructor(data, settings, templateSelector, userId, handleCardClick, handleDeleteClik, handlelikeClik) {
 		this._image = data.link;
 		this._text = data.name;
 		this._likes = data.likes;
@@ -16,6 +15,8 @@ export class Card {
 		this._handleCardClick = handleCardClick;
 		this._handleDeleteClik = handleDeleteClik;
 		this._handlelikeClik = handlelikeClik;
+
+		this._userId = userId;
 	}
 
 	//достаем разметку
@@ -40,7 +41,7 @@ export class Card {
 		this._element.querySelector(this._cardTitle).textContent = this._text;
 		this._cardImage.alt = this._text;
 
-		if (this._ovnerId !== userId) {
+		if (this._ovnerId !== this._userId) {
 			const del = this._element.querySelector(this._cardDelete);
 			del.remove();
 		}
@@ -52,7 +53,7 @@ export class Card {
 
 	//я лайкал?
 	isLikes() {
-		let Ilike = this._likes.find(user => user._id === userId);
+		let Ilike = this._likes.find(user => user._id === this._userId);
 		return Ilike;
 	}
 

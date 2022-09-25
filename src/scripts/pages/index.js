@@ -25,7 +25,7 @@ const popupFormDelete = new PopupWithForm('.popup-delete');
 
 const userInfo = new UserInfo(nameProfile, job, avatar);
 
-export let userId;
+let userId;
 
 const api = new Api({
 	url: 'https://mesto.nomoreparties.co/v1/cohort-50',
@@ -55,7 +55,7 @@ tasksCards
 	.catch(console.log);
 
 function createCard(data) {
-	const card = new Card(data, settings, '.card-template_type_default', handleCardClick,
+	const card = new Card(data, settings, '.card-template_type_default', userId, handleCardClick,
 		(id) => {
 			popupFormDelete.open();
 			popupFormDelete.changeSubmitHandler(() => {
