@@ -9,8 +9,7 @@ export class Api {
 			method: 'GET',
 			headers: this._headers
 		})
-			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-			.catch(console.log);
+		.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 	}
 
 	editAvatarUser(avatar) {
@@ -21,8 +20,8 @@ export class Api {
 				avatar
 			})
 		})
-			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-			.catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
+
 	}
 
 	editDdataUser(name, about) {
@@ -34,8 +33,7 @@ export class Api {
 				about
 			})
 		})
-			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-			.catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 	}
 
 	getInicialCards() {
@@ -43,8 +41,7 @@ export class Api {
 			method: 'GET',
 			headers: this._headers
 		})
-			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-			.catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 	}
 
 	addNewCard(name, link) {
@@ -56,8 +53,7 @@ export class Api {
 				link
 			})
 		})
-			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-			.catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 	}
 
 	deleteLikeCard(_id) {
@@ -65,8 +61,7 @@ export class Api {
 			method: 'DELETE',
 			headers: this._headers,
 		})
-			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-			.catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 	}
 
 	likeCard(_id) {
@@ -74,8 +69,7 @@ export class Api {
 			method: 'PUT',
 			headers: this._headers,
 		})
-			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-			.catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 	}
 
 	deliteCard(_id) {
@@ -83,7 +77,6 @@ export class Api {
 			method: 'DELETE',
 			headers: this._headers,
 		})
-			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-			.catch(console.log);
+			.then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 	}
 }

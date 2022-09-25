@@ -37,18 +37,22 @@ const api = new Api({
 
 //достать данные пользователя
 const tasksUser = api.getDdataUser();
-tasksUser.then(data => {
-	console.log(data);
-	userInfo.setUserInfo(data);
-	userId = data._id;
-});
+tasksUser
+	.then(data => {
+		userInfo.setUserInfo(data);
+		userId = data._id;
+	})
+	.catch(console.log);
+
 
 const tasksCards = api.getInicialCards();
-tasksCards.then(data => {
-	data.forEach(item => {
-		addCard(item);
-	});
-});
+tasksCards
+	.then(data => {
+		data.forEach(item => {
+			addCard(item);
+		});
+	})
+	.catch(console.log);
 
 function createCard(data) {
 	const card = new Card(data, settings, '.card-template_type_default', handleCardClick,
@@ -59,7 +63,8 @@ function createCard(data) {
 					.then(() => {
 						popupFormDelete.close();
 						card.deleteCard();
-					});
+					})
+					.catch(console.log);
 			});
 		},
 
@@ -68,13 +73,15 @@ function createCard(data) {
 				api.deleteLikeCard(id)
 					.then((res) => {
 						card.setLikes(res.likes);
-					});
+					})
+					.catch(console.log);
 			}
 			else {
 				api.likeCard(id)
 					.then((res) => {
 						card.setLikes(res.likes);
-					});
+					})
+					.catch(console.log);
 			}
 
 		});
@@ -108,7 +115,8 @@ function submitCard(data) {
 		})
 		.finally(() => {
 			popupFormAdd.renderLoading(false);
-		});
+		})
+		.catch(console.log);
 }
 
 //самбит редактирования профиля
@@ -121,7 +129,8 @@ function editProfile(data) {
 		})
 		.finally(() => {
 			popupFormEdit.renderLoading(false);
-		});
+		})
+		.catch(console.log);
 }
 
 //самбит редактирования avatar
@@ -131,9 +140,11 @@ function editAvatar(data) {
 		.then(res => {
 			userInfo.setUserInfo(res);
 			popupFormAvatar.close();
-		}).finally(() => {
+		})
+		.finally(() => {
 			popupFormAvatar.renderLoading(false);
-		});
+		})
+		.catch(console.log);
 }
 
 buttonEdit.addEventListener('click', () => {
