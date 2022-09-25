@@ -1,4 +1,4 @@
-import '../../style/index.css';
+//import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, popupEdit, popupAdd, nameProfile, job,
 	nameInput, jobInput, nameCardInput, cardImageInput, buttonElement,
@@ -35,8 +35,10 @@ const api = new Api({
 	}
 });
 
+//достать данные пользователя
 const tasksUser = api.getDdataUser();
 tasksUser.then(data => {
+	console.log(data);
 	userInfo.setUserInfo(data);
 	userId = data._id;
 });
