@@ -1,4 +1,4 @@
-import '../../style/index.css';
+//import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, popupEdit, popupAdd, nameProfile, job,
 	nameInput, jobInput, nameCardInput, cardImageInput, buttonElement,
@@ -12,6 +12,7 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from "../components/UserInfo.js";
+//import { ProvidePlugin } from "webpack";
 
 const formValidatorEdit = new FormValidator(settings, popupEdit);
 const formValidatorAdd = new FormValidator(settings, popupAdd);
@@ -25,7 +26,7 @@ const popupFormDelete = new PopupWithForm('.popup-delete');
 
 const userInfo = new UserInfo(nameProfile, job, avatar);
 
-export let userId;
+let userId;
 
 const api = new Api({
 	url: 'https://mesto.nomoreparties.co/v1/cohort-50',
@@ -35,21 +36,20 @@ const api = new Api({
 	}
 });
 
-const tasksUser = api.getDdataUser();
-tasksUser.then(data => {
-	userInfo.setUserInfo(data);
-	userId = data._id;
-});
-
-const tasksCards = api.getInicialCards();
-tasksCards.then(data => {
-	data.forEach(item => {
-		addCard(item);
-	});
-});
+Promise.all([api.getDdataUser(), api.getInicialCards()])
+	.then(([dataUser, dataCards]) => {
+		// тут установка данных пользователя
+		// и тут отрисовка карточек
+		userInfo.setUserInfo(dataUser);
+		userId = dataUser._id;
+		dataCards.forEach(item => {
+			addCard(item);
+		});
+	})
+	.catch(console.log);
 
 function createCard(data) {
-	const card = new Card(data, settings, '.card-template_type_default', handleCardClick,
+	const card = new Card(data, settings, '.card-template_type_default', userId, handleCardClick,
 		(id) => {
 			popupFormDelete.open();
 			popupFormDelete.changeSubmitHandler(() => {
@@ -57,7 +57,8 @@ function createCard(data) {
 					.then(() => {
 						popupFormDelete.close();
 						card.deleteCard();
-					});
+					})
+					.catch(console.log);
 			});
 		},
 
@@ -66,13 +67,15 @@ function createCard(data) {
 				api.deleteLikeCard(id)
 					.then((res) => {
 						card.setLikes(res.likes);
-					});
+					})
+					.catch(console.log);
 			}
 			else {
 				api.likeCard(id)
 					.then((res) => {
 						card.setLikes(res.likes);
-					});
+					})
+					.catch(console.log);
 			}
 
 		});
@@ -106,7 +109,8 @@ function submitCard(data) {
 		})
 		.finally(() => {
 			popupFormAdd.renderLoading(false);
-		});
+		})
+		.catch(console.log);
 }
 
 //самбит редактирования профиля
@@ -119,7 +123,8 @@ function editProfile(data) {
 		})
 		.finally(() => {
 			popupFormEdit.renderLoading(false);
-		});
+		})
+		.catch(console.log);
 }
 
 //самбит редактирования avatar
@@ -129,9 +134,11 @@ function editAvatar(data) {
 		.then(res => {
 			userInfo.setUserInfo(res);
 			popupFormAvatar.close();
-		}).finally(() => {
+		})
+		.finally(() => {
 			popupFormAvatar.renderLoading(false);
-		});
+		})
+		.catch(console.log);
 }
 
 buttonEdit.addEventListener('click', () => {
