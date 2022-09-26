@@ -32,11 +32,11 @@ export class Popup {
 
 	//добавляют и удаляютслушатели клика иконке и кнопке закрытия попапа
 	setEventListeners() {
-		this.popup.addEventListener('click', this._handleButtonOverlayClose);
+		this.popup.addEventListener('mousedown', this._handleButtonOverlayClose);
 		document.addEventListener('keydown', this._handleEscClose);
 	}
 	removeEventListeners() {
-		this.popup.removeEventListener('click', this._handleButtonOverlayClose);
+		this.popup.removeEventListener('mousedown', this._handleButtonOverlayClose);
 		document.removeEventListener('keydown', this._handleEscClose);
 	}
 }

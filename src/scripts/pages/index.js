@@ -149,21 +149,18 @@ buttonEdit.addEventListener('click', () => {
 	const userData = userInfo.getUserInfo();
 	nameInput.value = userData.userName;
 	jobInput.value = userData.userJob;
-	formValidatorEdit.hideInputError();
-	formValidatorEdit.toggleButtonState();
+	formValidatorEdit.resetValidation();
 	popupFormEdit.open();
 });
 
 buttonAdd.addEventListener('click', function () {
 	popupFormAdd.open();
-	formValidatorAdd.disableSubmitButton();
-	formValidatorAdd.hideInputError();
+	formValidatorAdd.resetValidation();
 });
 
 buttonAvatar.addEventListener('click', function () {
 	popupFormAvatar.open();
-	formValidatorAvatar.disableSubmitButton();
-	formValidatorAvatar.hideInputError();
+	formValidatorAvatar.resetValidation();
 });
 
 formValidatorEdit.enableValidation();

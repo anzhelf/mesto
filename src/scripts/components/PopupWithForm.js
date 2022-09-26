@@ -5,8 +5,6 @@ export class PopupWithForm extends Popup {
 		super(popupSelector);
 		this._submitForm = submitForm;
 		this.blockForm = this.popup.querySelector(".popup__form");
-		this._nameInput = this.blockForm.querySelector(".popup__input_type_name");
-		this._jobInput = this.blockForm.querySelector(".popup__input_type_job");
 		this._submitFormHandler = this._submitFormHandler.bind(this);
 		this._inputList = Array.from(this.popup.querySelectorAll('.popup__input'));
 
@@ -28,6 +26,13 @@ export class PopupWithForm extends Popup {
 		this._data = {};
 		this._inputList.forEach((inputElement) => (this._data[inputElement.name] = inputElement.value));
 		return this._data;
+	}
+
+	// тут вставляем в `value` инпута данные
+	_setInputValues(data) {
+		this._inputList.forEach((inputElement) => {
+      inputElement.value = data[inputElement.name];
+		});
 	}
 
 	close() {

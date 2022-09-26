@@ -12,11 +12,11 @@ export class FormValidator {
 
 	//устанавить все обработчики
 	_setEventListeners() {
-		this.toggleButtonState();
+		this._toggleButtonState();
 		this._inputList.forEach((inputElement) => {
 			inputElement.addEventListener('input', () => {
 				this._toggleInputError(inputElement);
-				this.toggleButtonState();
+				this._toggleButtonState();
 			});
 		});
 	}
@@ -30,13 +30,11 @@ export class FormValidator {
 	}
 
 	// Функция, которая удаляет класс с ошибкой
-	hideInputError() {
-		this._inputList.forEach((inputElement) => {
-			this._formError = this._form.querySelector(`.${inputElement.id}-input-error`);
-			inputElement.classList.remove(this._errorShow);
-			this._formError.classList.remove(this._inputErrorMessage);
-			this._formError.textContent = '';
-		});
+	_hideInputError(inputElement) {
+		this._formError = this._form.querySelector(`.${inputElement.id}-input-error`);
+		inputElement.classList.remove(this._errorShow);
+		this._formError.classList.remove(this._inputErrorMessage);
+		this._formError.textContent = '';
 	}
 
 	// Функция, которая проверяет валидность поля
@@ -44,7 +42,7 @@ export class FormValidator {
 		if (!inputElement.validity.valid) {
 			this._showInputError(inputElement);
 		} else {
-			this.hideInputError(inputElement);
+			this._hideInputError(inputElement);
 		}
 	}
 
@@ -56,7 +54,7 @@ export class FormValidator {
 	}
 
 	//изменить состояние кнопки сабмита
-	toggleButtonState() {
+	_toggleButtonState() {
 
 		if (this._hasInvalidInput()) {
 			this._buttonElement.classList.add(this._buttonInactive);
@@ -73,8 +71,11 @@ export class FormValidator {
 		this._setEventListeners();
 	}
 
-	disableSubmitButton() {
-		this._buttonElement.classList.add(this._buttonInactive);
-		this._buttonElement.setAttribute('disabled', 'disabled');
+	//очищаем поля от ошибок и изменяем состояние кнопки
+	resetValidation() {
+		this._toggleButtonState();
+		this._inputList.forEach((inputElement) => {
+			this._hideInputError(inputElement)
+		})
 	}
 }
