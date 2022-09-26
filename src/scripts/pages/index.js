@@ -1,4 +1,4 @@
-import '../../style/index.css';
+//import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, popupEdit, popupAdd, nameProfile, job,
 	nameInput, jobInput, nameCardInput, cardImageInput, buttonElement,
@@ -63,7 +63,7 @@ function createCard(data) {
 		},
 
 		(id) => {
-			if (card.isLikes()) {
+			if (card.hasMyLike()) {
 				api.deleteLikeCard(id)
 					.then((res) => {
 						card.setLikes(res.likes);
