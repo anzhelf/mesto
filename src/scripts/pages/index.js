@@ -14,9 +14,13 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from "../components/UserInfo.js";
 //import { ProvidePlugin } from "webpack";
 
-const formValidatorEdit = new FormValidator(settings, popupEdit);
-const formValidatorAdd = new FormValidator(settings, popupAdd);
-const formValidatorAvatar = new FormValidator(settings, popupAvatar);
+const formEdit = popupEdit.querySelector('.popup__form_Edit');
+const formAdd = popupAdd.querySelector('.popup__form_Add');
+const formAvatar = popupAvatar.querySelector('.popup__form_avatar');
+
+const formValidatorEdit = new FormValidator(settings, formEdit);
+const formValidatorAdd = new FormValidator(settings, formAdd);
+const formValidatorAvatar = new FormValidator(settings, formAvatar);
 
 const popupOpenImage = new PopupWithImage('.popup_open_image');
 const popupFormAdd = new PopupWithForm('.popup_add_card', submitCard);

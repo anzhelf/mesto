@@ -1,15 +1,13 @@
 export class FormValidator {
-	constructor(data, popup) {
-		this._popup = popup;
-		this._form = data.form;
+	constructor(data, form) {
+		this._form = form;
 		this._input = data.input;
 		this._errorShow = data.errorShow;
 		this._inputErrorMessage = data.inputErrorMessage;
 		this._button = data.button;
 		this._buttonInactive = data.buttonInactive;
-		this._inputList = Array.from(this._popup.querySelector(this._form).querySelectorAll(this._input));
-		this._buttonElement = this._popup.querySelector(this._form).querySelector(this._button);
-		this._formElement = this._popup.querySelector(this._form);
+		this._inputList = Array.from(this._form.querySelectorAll(this._input));
+		this._buttonElement = this._form.querySelector(this._button);
 	}
 
 	//устанавить все обработчики
@@ -25,7 +23,7 @@ export class FormValidator {
 
 	// Функция, которая добавляет класс с ошибкой
 	_showInputError(inputElement) {
-		this._formError = this._formElement.querySelector(`.${inputElement.id}-input-error`);
+		this._formError = this._form.querySelector(`.${inputElement.id}-input-error`);
 		inputElement.classList.add(this._errorShow);
 		this._formError.classList.add(this._inputErrorMessage);
 		this._formError.textContent = inputElement.validationMessage;
@@ -34,7 +32,7 @@ export class FormValidator {
 	// Функция, которая удаляет класс с ошибкой
 	hideInputError() {
 		this._inputList.forEach((inputElement) => {
-			this._formError = this._formElement.querySelector(`.${inputElement.id}-input-error`);
+			this._formError = this._form.querySelector(`.${inputElement.id}-input-error`);
 			inputElement.classList.remove(this._errorShow);
 			this._formError.classList.remove(this._inputErrorMessage);
 			this._formError.textContent = '';
