@@ -12,6 +12,7 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from "../components/UserInfo.js";
+//import { ProvidePlugin } from "webpack";
 
 const formValidatorEdit = new FormValidator(settings, popupEdit);
 const formValidatorAdd = new FormValidator(settings, popupAdd);
@@ -35,20 +36,13 @@ const api = new Api({
 	}
 });
 
-//достать данные пользователя
-const tasksUser = api.getDdataUser();
-tasksUser
-	.then(data => {
-		userInfo.setUserInfo(data);
-		userId = data._id;
-	})
-	.catch(console.log);
-
-
-const tasksCards = api.getInicialCards();
-tasksCards
-	.then(data => {
-		data.forEach(item => {
+Promise.all([api.getDdataUser(), api.getInicialCards()])
+	.then(([dataUser, dataCards]) => {
+		// тут установка данных пользователя
+		// и тут отрисовка карточек
+		userInfo.setUserInfo(dataUser);
+		userId = dataUser._id;
+		dataCards.forEach(item => {
 			addCard(item);
 		});
 	})

@@ -25,19 +25,19 @@ export class FormValidator {
 
 	// Функция, которая добавляет класс с ошибкой
 	_showInputError(inputElement) {
-		const formError = this._formElement.querySelector(`.${inputElement.id}-input-error`);
+		this._formError = this._formElement.querySelector(`.${inputElement.id}-input-error`);
 		inputElement.classList.add(this._errorShow);
-		formError.classList.add(this._inputErrorMessage);
-		formError.textContent = inputElement.validationMessage;
+		this._formError.classList.add(this._inputErrorMessage);
+		this._formError.textContent = inputElement.validationMessage;
 	}
 
 	// Функция, которая удаляет класс с ошибкой
 	hideInputError() {
 		this._inputList.forEach((inputElement) => {
-		const formError = this._formElement.querySelector(`.${inputElement.id}-input-error`);
-		inputElement.classList.remove(this._errorShow);
-		formError.classList.remove(this._inputErrorMessage);
-		formError.textContent = '';
+			this._formError = this._formElement.querySelector(`.${inputElement.id}-input-error`);
+			inputElement.classList.remove(this._errorShow);
+			this._formError.classList.remove(this._inputErrorMessage);
+			this._formError.textContent = '';
 		});
 	}
 
@@ -75,8 +75,8 @@ export class FormValidator {
 		this._setEventListeners();
 	}
 
-  disableSubmitButton() {
+	disableSubmitButton() {
 		this._buttonElement.classList.add(this._buttonInactive);
-	  this._buttonElement.setAttribute('disabled', 'disabled');
+		this._buttonElement.setAttribute('disabled', 'disabled');
 	}
 }

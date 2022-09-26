@@ -5,7 +5,7 @@ export class Card {
 		this._likes = data.likes;
 		this._id = data._id;
 		this._ovnerId = data.owner._id;
-
+		this._templateSelector = templateSelector;
 		this._card = settings.card;
 		this._cardImg = settings.cardImage;
 		this._cardLikeSelector = settings.cardLike;
@@ -14,10 +14,7 @@ export class Card {
 		this._handleCardClick = handleCardClick;
 		this._handleDeleteClik = handleDeleteClik;
 		this._handlelikeClik = handlelikeClik;
-
 		this._userId = userId;
-
-		this._templateSelector = templateSelector;
 	}
 
 	//достаем разметку
