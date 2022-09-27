@@ -1,4 +1,4 @@
-//import '../../style/index.css';
+import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, nameProfile, job,
 	settings, buttonAvatar, avatar, formEdit,
