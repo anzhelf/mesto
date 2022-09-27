@@ -8,9 +8,14 @@ export class UserInfo {
 	//возвращает объект с данными пользователя
 	getUserInfo() {
 		return {
+			name: this._userName.textContent,
+			about: this._userJob.textContent,
+			avatar: this._userAvatar.src
+/*
 			userName: this._userName.textContent,
 			userJob: this._userJob.textContent,
 			avatar: this._userAvatar.src
+			*/
 		}
 	}
 	//принимает новые данные пользователя и добавляет их на страницу

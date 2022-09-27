@@ -147,8 +147,7 @@ function editAvatar(data) {
 
 buttonEdit.addEventListener('click', () => {
 	const userData = userInfo.getUserInfo();
-	nameInput.value = userData.userName;
-	jobInput.value = userData.userJob;
+	popupFormEdit.setInputValues(userData);
 	formValidatorEdit.resetValidation();
 	popupFormEdit.open();
 });
