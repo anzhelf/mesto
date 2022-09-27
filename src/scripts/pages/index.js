@@ -1,8 +1,8 @@
 //import '../../style/index.css';
 import {
-	buttonEdit, buttonAdd, popupEdit, popupAdd, nameProfile, job,
-	nameInput, jobInput, nameCardInput, cardImageInput, buttonElement,
-	initialCards, settings, buttonAvatar, popupAvatar, avatar
+	buttonEdit, buttonAdd, nameProfile, job,
+	settings, buttonAvatar, avatar, formEdit,
+	formAdd, formAvatar
 } from "../utils/constants.js";
 
 import { Api } from '../components/Api.js';
@@ -12,11 +12,8 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from "../components/UserInfo.js";
-//import { ProvidePlugin } from "webpack";
 
-const formEdit = popupEdit.querySelector('.popup__form_Edit');
-const formAdd = popupAdd.querySelector('.popup__form_Add');
-const formAvatar = popupAvatar.querySelector('.popup__form_avatar');
+let userId;
 
 const formValidatorEdit = new FormValidator(settings, formEdit);
 const formValidatorAdd = new FormValidator(settings, formAdd);
@@ -30,8 +27,6 @@ const popupFormDelete = new PopupWithForm('.popup-delete');
 
 const userInfo = new UserInfo(nameProfile, job, avatar);
 
-let userId;
-
 const api = new Api({
 	url: 'https://mesto.nomoreparties.co/v1/cohort-50',
 	headers: {
@@ -40,6 +35,11 @@ const api = new Api({
 	}
 });
 
+//добавить карты на стр
+const defaultCardList = new Section({
+	renderer: createCard
+}, '.cards');
+
 Promise.all([api.getDdataUser(), api.getInicialCards()])
 	.then(([dataUser, dataCards]) => {
 		// тут установка данных пользователя
@@ -47,11 +47,11 @@ Promise.all([api.getDdataUser(), api.getInicialCards()])
 		userInfo.setUserInfo(dataUser);
 		userId = dataUser._id;
 		dataCards.forEach(item => {
-			addCard(item);
+			defaultCardList.addItem(item);
 		});
 	})
 	.catch(console.log);
-	 
+
 function createCard(data) {
 	const card = new Card(data, settings, '.card-template_type_default', userId, handleCardClick,
 		(id) => {
@@ -90,23 +90,12 @@ function handleCardClick(name, link) {
 	popupOpenImage.open(link, name);
 }
 
-function addCard(data) {
-	const cardElement = createCard(data);
-	defaultCardList.addItem(cardElement);
-}
-
-//добавить карты на стр
-const defaultCardList = new Section({
-	renderer: addCard
-}, '.cards');
-
-
 //сабмит карты
 function submitCard(data) {
 	popupFormAdd.renderLoading(true);
 	api.addNewCard(data.name, data.link)
 		.then(res => {
-			addCard(res);
+			defaultCardList.addItem(res);
 			popupFormAdd.close();
 		})
 		.catch(console.log)
