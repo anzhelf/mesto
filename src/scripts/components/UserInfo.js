@@ -1,8 +1,9 @@
 export class UserInfo {
-	constructor(userName, userJob, userAvatar) {
+	constructor(userName, userJob, userAvatar, userId) {
 		this._userName = userName;
 		this._userJob = userJob;
 		this._userAvatar = userAvatar;
+		this._userId =userId;
 	}
 
 	//возвращает объект с данными пользователя

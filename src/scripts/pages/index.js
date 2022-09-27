@@ -51,7 +51,7 @@ Promise.all([api.getDdataUser(), api.getInicialCards()])
 		});
 	})
 	.catch(console.log);
-
+	 
 function createCard(data) {
 	const card = new Card(data, settings, '.card-template_type_default', userId, handleCardClick,
 		(id) => {
@@ -97,11 +97,9 @@ function addCard(data) {
 
 //добавить карты на стр
 const defaultCardList = new Section({
-	items: initialCards.reverse(),
-	renderer: (item) => {
-		addCard(item);
-	}
+	renderer: addCard
 }, '.cards');
+
 
 //сабмит карты
 function submitCard(data) {
@@ -111,10 +109,10 @@ function submitCard(data) {
 			addCard(res);
 			popupFormAdd.close();
 		})
+		.catch(console.log)
 		.finally(() => {
 			popupFormAdd.renderLoading(false);
-		})
-		.catch(console.log);
+		});
 }
 
 //самбит редактирования профиля
@@ -125,10 +123,10 @@ function editProfile(data) {
 			userInfo.setUserInfo(res);
 			popupFormEdit.close();
 		})
+		.catch(console.log)
 		.finally(() => {
 			popupFormEdit.renderLoading(false);
-		})
-		.catch(console.log);
+		});
 }
 
 //самбит редактирования avatar
@@ -139,10 +137,10 @@ function editAvatar(data) {
 			userInfo.setUserInfo(res);
 			popupFormAvatar.close();
 		})
+		.catch(console.log)
 		.finally(() => {
 			popupFormAvatar.renderLoading(false);
-		})
-		.catch(console.log);
+		});
 }
 
 buttonEdit.addEventListener('click', () => {
