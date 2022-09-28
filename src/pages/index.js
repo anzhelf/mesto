@@ -5,7 +5,7 @@ import {
 	formAdd, formAvatar
 } from "../scripts/utils/constants.js";
 
-import { Api } from '../scripts/components/Api.js';
+import { Api } from '../scripts/components/Apiooo.js';
 import { Card } from '../scripts/components/Card.js';
 import { FormValidator } from '../scripts/components/FormValidator.js';
 import { Section } from '../scripts/components/Section.js';
