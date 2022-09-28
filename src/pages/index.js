@@ -1,11 +1,11 @@
-//import '../../style/index.css';
+import './index.css';
 import {
 	buttonEdit, buttonAdd, nameProfile, job,
 	settings, buttonAvatar, avatar, formEdit,
 	formAdd, formAvatar
 } from "../scripts/utils/constants.js";
 
-import { Api } from '../scripts/components/Apiooo.js';
+import { Api } from '../scripts/components/Api.js';
 import { Card } from '../scripts/components/Card.js';
 import { FormValidator } from '../scripts/components/FormValidator.js';
 import { Section } from '../scripts/components/Section.js';
