@@ -1,17 +1,17 @@
-import '../../style/index.css';
+//import '../../style/index.css';
 import {
 	buttonEdit, buttonAdd, nameProfile, job,
 	settings, buttonAvatar, avatar, formEdit,
 	formAdd, formAvatar
-} from "../utils/constants.js";
+} from "../scripts/utils/constants.js";
 
-import { Api } from '../components/Api.js';
-import { Card } from '../components/Card.js';
-import { FormValidator } from '../components/FormValidator.js';
-import { Section } from '../components/Section.js';
-import { PopupWithImage } from '../components/PopupWithImage.js';
-import { PopupWithForm } from '../components/PopupWithForm.js';
-import { UserInfo } from "../components/UserInfo.js";
+import { Api } from '../scripts/components/Api.js';
+import { Card } from '../scripts/components/Card.js';
+import { FormValidator } from '../scripts/components/FormValidator.js';
+import { Section } from '../scripts/components/Section.js';
+import { PopupWithImage } from '../scripts/components/PopupWithImage.js';
+import { PopupWithForm } from '../scripts/components/PopupWithForm.js';
+import { UserInfo } from "../scripts/components/UserInfo.js";
 
 let userId;
 
