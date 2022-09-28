@@ -46,9 +46,7 @@ Promise.all([api.getDdataUser(), api.getInicialCards()])
 		// и тут отрисовка карточек
 		userInfo.setUserInfo(dataUser);
 		userId = dataUser._id;
-		dataCards.forEach(item => {
-			defaultCardList.addItem(item);
-		});
+		defaultCardList.renderItems(dataCards);
 	})
 	.catch(console.log);
 

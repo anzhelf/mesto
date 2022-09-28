@@ -31,7 +31,7 @@ export class PopupWithForm extends Popup {
 	// тут вставляем в `value` инпута данные
 	setInputValues(data) {
 		this._inputList.forEach((inputElement) => {
-      inputElement.value = data[inputElement.name];
+			inputElement.value = data[inputElement.name];
 		});
 	}
 
