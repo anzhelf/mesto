@@ -14,3 +14,9 @@
 Проект был разработан в рамках учебного задания на платформе Яндекс.Практикум. Все работы проверяются менторами и проходят код-ревью.
 
 Проект доступен по [ссылке](https://anzhelf.github.io/mesto/).
+
+Продолжение работы над проектом:
+
+- [Портирование Mesto на React](https://github.com/anzhelf/mesto-react).
+- [Бекенд для проекта Mesto](https://github.com/anzhelf/express-mesto-gha).
+- [Репозиторий для деплоя проекта на сервер Фронтенд + Бекенд](https://github.com/anzhelf/react-mesto-api-full-gha).
