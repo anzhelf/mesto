@@ -11,5 +11,6 @@
   .profile__text-box {
     margin: 22px 0 14px 36px;
     grid-gap: 10px;
+    justify-content: center;
   }
 }
