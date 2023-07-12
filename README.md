@@ -19,4 +19,6 @@
 
 - [Портирование Mesto на React](https://github.com/anzhelf/mesto-react).
 - [Бекенд для проекта Mesto](https://github.com/anzhelf/express-mesto-gha).
-- [Репозиторий для деплоя проекта на сервер Фронтенд + Бекенд](https://github.com/anzhelf/react-mesto-api-full-gha).
+- [Репозиторий для деплоя проекта Mesto на сервер Фронтенд + Бекенд](https://github.com/anzhelf/react-mesto-api-full-gha).
+
+Проект выложен на домен: https://backend.anzhelf-mesto.nomoredomains.monster
